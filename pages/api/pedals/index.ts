@@ -8,9 +8,9 @@ function parseCSV(csv: string): ToneGraph {
 
   return R.compose(
     R.reduce((result, line) => {
-      const [frequency, db, _, gain, tone] = line.split(",");
+      const [frequency, db, _, __, tone] = line.split(",");
       if (!Number.isNaN(Number(frequency))) {
-        result.push({ frequency: Number(frequency), db: Number(db), gain, tone });
+        result.push({ frequency: Number(frequency), db: Number(db), tone });
       }
 
       return result;

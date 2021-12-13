@@ -10,8 +10,10 @@ export default function App({ pedals }: Props) {
   return <Home pedals={pedals} />;
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
+  const url = `${context.req.headers.referer}api/pedals`;
+
   return {
-    props: { pedals: await fetch("http://localhost:3000/api/pedals").then((res) => res.json()) },
+    props: { pedals: await fetch(url).then((res) => res.json()) },
   };
 }
