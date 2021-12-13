@@ -26,4 +26,16 @@ const nextConfig = {
   // },
 };
 
-module.exports = withPlugins([withFonts, withImages, [withExpo, { projectRoot: __dirname }]], nextConfig);
+module.exports = withPlugins(
+  [
+    withFonts,
+    withImages,
+    [
+      withExpo,
+      {
+        projectRoot: __dirname,
+      },
+    ],
+  ],
+  nextConfig,
+);

@@ -1,6 +1,6 @@
-# Happi Karaoke v2
+# Pedal Tone Graph
 
-This repo contains the code of the new Happi Karaoke app.
+This repo contains the code of the Pedal Tone Graph app, which lets you browse and compare the frequency response of different guitar pedals.
 
 ### Set up
 
