@@ -8,7 +8,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       flex: 1,
       flexDirection: responsiveValue({ mobile: "column", tablet: "column", desktop: "row-reverse" }),
       width: "100%",
-      alignItems: "center",
+      alignItems: responsiveValue({ mobile: "center", tablet: "center", desktop: "flex-start" }),
     },
   }));
 

@@ -13,12 +13,13 @@ type Props = {
   data: ToneGraph;
 };
 
-const styles = createStyles(() => ({
+const styles = createStyles(({ theme }) => ({
   container: {
     flexDirection: "column",
   },
   chartContainer: {
     marginLeft: -15,
+    marginTop: theme.spacings.l,
   },
 }));
 
