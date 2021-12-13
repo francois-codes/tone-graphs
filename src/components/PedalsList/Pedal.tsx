@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, ImageStyle } from "react-native";
 import { useCreateStyles } from "../Theme";
+import { Buttons } from "./Buttons";
 
 export function Pedal({ pedal }: { pedal: Pedal }) {
   const styles = useCreateStyles(({ theme, responsiveValue }) => ({
@@ -23,10 +24,6 @@ export function Pedal({ pedal }: { pedal: Pedal }) {
     titleContainer: { flexGrow: 1, flexDirection: "column", flex: 1, paddingHorizontal: theme.spacings.m },
     title: theme.typography.h1.extend({ fontWeight: "800" }),
     brand: theme.typography.h2.extend({ fontWeight: "600" }),
-    buttonsContainer: {
-      borderColor: "red",
-      borderWidth: 1,
-    },
   }));
 
   return (
@@ -36,7 +33,7 @@ export function Pedal({ pedal }: { pedal: Pedal }) {
         <Text style={styles.title}>{pedal.name}</Text>
         <Text style={styles.brand}>{pedal.brand}</Text>
       </View>
-      <View style={styles.buttonsContainer}></View>
+      <Buttons pedal={pedal} />
     </View>
   );
 }
