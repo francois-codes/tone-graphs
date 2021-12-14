@@ -3,6 +3,7 @@
   "types": "index.d.ts",
   "dependencies": {
     "app-root-path": "^3.0.0",
+    "contentful": "^9.1.5",
     "d3-scale": "^4.0.2",
     "electron-is-dev": "^2.0.0",
     "electron-next": "^3.1.5",

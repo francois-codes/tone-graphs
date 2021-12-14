@@ -10,11 +10,10 @@ import { Layout } from "./components/Layout/Layout";
 import { PedalsList } from "./components/PedalsList";
 
 type Props = {
-  pedals: Record<string, Pedal>;
+  pedals: Pedal[];
 };
 
 export function Home({ pedals }: Props) {
-  const { ts808 } = pedals;
   return (
     <RecoilRoot>
       <SafeAreaProvider>
@@ -22,8 +21,8 @@ export function Home({ pedals }: Props) {
           <Container>
             <Header />
             <Layout>
-              <Chart data={ts808.data} />
-              <PedalsList />
+              <Chart data={pedals[1].datapoints} />
+              <PedalsList pedals={pedals} />
             </Layout>
           </Container>
         </Loader>

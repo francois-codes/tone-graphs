@@ -11,9 +11,8 @@ declare type ToneGraph = DataPoint[];
 declare interface Pedal {
   name: string;
   brand: string;
-  tags?: string;
   image?: string;
-  filePath: string;
+  datapoints: ToneGraph;
 }
 
 declare type ResponsiveSpecs<T> = {

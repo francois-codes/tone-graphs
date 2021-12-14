@@ -6,7 +6,7 @@ import { useCreateStyles } from "../Theme";
 export function Header() {
   const styles = useCreateStyles(({ theme, responsiveValue }) => ({
     container: {
-      height: 150,
+      height: responsiveValue({ mobile: 100, desktop: 150 }),
       width: "100%",
       paddingVertical: theme.spacings.m,
       paddingHorizontal: theme.spacings.m,

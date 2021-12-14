@@ -16,6 +16,7 @@ export function Pedal({ pedal }: { pedal: Pedal }) {
       borderRadius: 10,
       padding: theme.spacings.m,
       marginVertical: theme.spacings.m,
+      height: responsiveValue({ mobile: 70, desktop: 91 }),
     },
     image: {
       width: responsiveValue({ desktop: 60, tablet: 40, mobile: 30 }),
