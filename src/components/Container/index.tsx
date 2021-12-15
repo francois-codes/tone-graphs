@@ -29,13 +29,18 @@ export function Container({ children }: Props) {
       minHeight: "100vh",
       minWidth: "100vw",
     },
+    innerScroll: {
+      flex: 1,
+    },
   }));
 
   return (
     <SafeAreaView style={styles.app}>
       <ScrollView scrollEnabled={false} bounces={false} contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.container}>{children}</View>
-        <Footer />
+        <ScrollView bounces contentContainerStyle={styles.innerScroll}>
+          <View style={styles.container}>{children}</View>
+          <Footer />
+        </ScrollView>
       </ScrollView>
     </SafeAreaView>
   );
