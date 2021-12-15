@@ -11,6 +11,7 @@ import { createStyles } from "../Theme";
 
 type Props = {
   data: ToneGraph;
+  pedals: Pedal[];
 };
 
 const styles = createStyles(({ theme }) => ({
@@ -23,12 +24,13 @@ const styles = createStyles(({ theme }) => ({
   },
 }));
 
-export function Chart({ data }: Props) {
+export function Chart({ data, pedals }: Props) {
   const [toneRange] = useToneRange();
 
   const toneValue = `${toneRange}%`;
-  const _data = R.groupBy(R.prop("tone"), data)[toneValue];
+  const _data = R.groupBy(R.prop("tone"), pedals[0].datapoints)[toneValue];
 
+  console.log({ pedals, _data });
   const { width, height } = useChartDimensions();
 
   return (
