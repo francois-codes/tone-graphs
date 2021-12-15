@@ -1,4 +1,5 @@
 import React from "react";
+import * as R from "ramda";
 import { View } from "react-native";
 import { Pedal } from "./Pedal";
 
@@ -14,9 +15,11 @@ export function PedalsList({ pedals }: { pedals: Pedal[] }) {
     },
   }));
 
+  const pedalsList = R.reverse(R.sortBy(R.compose(R.length, R.prop("datapoints")), pedals));
+
   return (
     <View style={styles.container}>
-      {pedals.map((pedal, index) => (
+      {pedalsList.map((pedal, index) => (
         <Pedal key={index} pedal={pedal} />
       ))}
     </View>

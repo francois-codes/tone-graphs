@@ -17,6 +17,9 @@ export function Pedal({ pedal }: { pedal: Pedal }) {
       padding: theme.spacings.m,
       marginVertical: theme.spacings.m,
       height: responsiveValue({ mobile: 70, desktop: 91 }),
+      maxHeight: responsiveValue({ mobile: 70, desktop: 91 }),
+      overflow: "hidden",
+      opacity: pedal.datapoints.length === 0 ? 0.3 : 1,
     },
     image: {
       width: responsiveValue({ desktop: 60, tablet: 40, mobile: 30 }),
@@ -31,8 +34,12 @@ export function Pedal({ pedal }: { pedal: Pedal }) {
     <View style={styles.container}>
       <Image source={{ uri: pedal.image }} style={styles.image as ImageStyle} resizeMode="contain" />
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>{pedal.name}</Text>
-        <Text style={styles.brand}>{pedal.brand}</Text>
+        <Text style={styles.title} numberOfLines={1}>
+          {pedal.name}
+        </Text>
+        <Text style={styles.brand} numberOfLines={1}>
+          {pedal.brand}
+        </Text>
       </View>
       <Buttons pedal={pedal} />
     </View>

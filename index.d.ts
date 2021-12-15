@@ -9,6 +9,8 @@ declare interface DataPoint {
 declare type ToneGraph = DataPoint[];
 
 declare interface Pedal {
+  id: string;
+  color: string;
   name: string;
   brand: string;
   image?: string;

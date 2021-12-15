@@ -28,7 +28,7 @@ export function Header() {
       <View style={styles.logoContainer}>
         <Image source={{ uri: logo }} style={styles.logo as ImageStyle} resizeMode="contain" />
       </View>
-      <Text style={styles.text}>Pedal Tone Graphs</Text>
+      <Text style={styles.text}>Tone Graphs</Text>
     </View>
   );
 }

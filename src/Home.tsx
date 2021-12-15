@@ -14,7 +14,7 @@ type Props = {
 };
 
 export function Home({ pedals }: Props) {
-  const pedalsPreview = pedals.filter((pedal) => pedal.name.includes("808") || pedal.name.includes("Muff"));
+  const pedalsPreview = pedals.filter((pedal) => pedal?.datapoints?.length > 0);
 
   return (
     <RecoilRoot>
@@ -23,7 +23,7 @@ export function Home({ pedals }: Props) {
           <Container>
             <Header />
             <Layout>
-              <Chart data={pedals[1].datapoints} pedals={pedalsPreview} />
+              <Chart pedals={pedalsPreview} />
               <PedalsList pedals={pedals} />
             </Layout>
           </Container>
