@@ -1,9 +1,6 @@
-import { getDataKey } from "./settings";
-
 import * as R from "ramda";
 
 const NA = "NA";
-const DATAPOINTS = "datapoints";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const inspect = (msg) => R.tap((x) => console.log(msg, x));
@@ -33,21 +30,9 @@ const groupByProp = (prop) => R.groupBy(R.prop(prop));
 const groupByTone = groupByProp("tone");
 const groupByGain = groupByProp("gain");
 
-const updateDataPoints = (pedal) =>
-  R.evolve(
-    {
-      datapoints: R.map(
-        R.compose(
-          (datapoint) => R.assoc(getDataKey(pedal), datapoint.db, datapoint),
-          (datapoint) => R.assoc("id", pedal.id, datapoint),
-        ),
-      ),
-    },
-    pedal,
-  );
-
 export const getGraphData = (select, pedals) =>
-  R.compose(
-    R.apply(R.concat),
-    R.map(R.compose(select, R.mapObjIndexed(groupByGain), groupByTone, R.propOr([], DATAPOINTS), updateDataPoints)),
+  R.map(
+    R.evolve({
+      datapoints: R.compose(select, R.mapObjIndexed(groupByGain), groupByTone),
+    }),
   )(pedals);

@@ -18,6 +18,7 @@ export const xAxisProps: XAxisProps = {
   domain: frequencyRange,
   scale: "log",
   name: "Frequency (Hz)",
+  allowDuplicatedCategory: false,
   style,
 };
 
@@ -38,5 +39,3 @@ export const lineProps = {
   dot: false,
   type: "linear" as CurveType,
 };
-
-export const getDataKey = ({ id }: Pedal) => `${id}_${DataKeys.db}`;

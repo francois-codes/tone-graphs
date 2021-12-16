@@ -30,7 +30,7 @@ export function Home({ pedals }: Props) {
         <Container>
           <Header />
           <Layout>
-            <Chart pedals={pedalsPreview} />
+            <Chart />
             <PedalsList pedals={pedals} />
           </Layout>
         </Container>
