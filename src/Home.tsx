@@ -9,6 +9,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Layout } from "./components/Layout/Layout";
 import { PedalsList } from "./components/PedalsList";
 import { useSetVisiblePedals } from "src/hooks/useVisiblePedals";
+import { InfoText } from "./components/InfoText";
+import { TopLinks } from "./components/TopLinks";
 
 type Props = {
   pedals: Pedal[];
@@ -29,10 +31,12 @@ export function Home({ pedals }: Props) {
       <Loader>
         <Container>
           <Header />
+          <TopLinks />
           <Layout>
             <Chart />
             <PedalsList pedals={pedals} />
           </Layout>
+          <InfoText />
         </Container>
       </Loader>
     </SafeAreaProvider>

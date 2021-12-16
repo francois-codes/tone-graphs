@@ -20,7 +20,7 @@ export function Container({ children }: Props) {
       maxWidth: 1440,
       flex: 1,
       width,
-      flexGrow: 1,
+      // flexGrow: 1,
       marginHorizontal: "auto",
       alignItems: "center",
     },
@@ -36,11 +36,10 @@ export function Container({ children }: Props) {
 
   return (
     <SafeAreaView style={styles.app}>
-      <ScrollView scrollEnabled={false} bounces={false} contentContainerStyle={styles.scrollContainer}>
-        <ScrollView bounces contentContainerStyle={styles.innerScroll}>
-          <View style={styles.container}>{children}</View>
-          <Footer />
-        </ScrollView>
+      <ScrollView bounces={false} contentContainerStyle={styles.scrollContainer}>
+        {/* <ScrollView bounces contentContainerStyle={styles.innerScroll}> */}
+        <View style={styles.container}>{children}</View>
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );
