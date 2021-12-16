@@ -7,7 +7,7 @@ export enum DataKeys {
 }
 
 const frequencyRange = [40, 21_000];
-const dbRange = [-35, 5];
+const dbRange = [-35, 10];
 
 const style = { fontFamily: "Open sans", fontSize: 12 };
 
@@ -25,7 +25,7 @@ export const xAxisProps: XAxisProps = {
 export const yAxisProps: YAxisProps = {
   type: "number",
   dataKey: DataKeys.db,
-  ticks: [-30, -20, -10, 0],
+  ticks: [-30, -20, -10, 0, 10],
   domain: dbRange,
   name: "Decibels (dB)",
   style,
