@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { isPedalVisible, useIsPedalVisible, useSetVisiblePedals } from "src/hooks/useVisiblePedals";
+import { useIsPedalVisible, useSetVisiblePedals } from "src/hooks/useVisiblePedals";
 import { Button } from "../Button";
 import { createStyles } from "../Theme";
 

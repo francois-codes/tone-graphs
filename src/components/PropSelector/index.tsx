@@ -2,15 +2,23 @@ import React from "react";
 import { Slider, Text } from "react-native-elements";
 import { View } from "react-native";
 import { useCreateStyles } from "../Theme";
-import { useToneRange } from "src/hooks/useToneRange";
 import { useChartDimensions } from "src/hooks/useChartDimensions";
 
-export function ToneSelector() {
-  const [toneRange, setToneRange] = useToneRange();
+type Props = {
+  label: string;
+  value: number;
+  setValue: (value: number) => void;
+  steps?: number;
+};
+
+const DEFAULT_STEPS = 25;
+
+export function PropSelector(props: Props) {
+  const { value, setValue, label, steps = DEFAULT_STEPS } = props;
 
   const { width } = useChartDimensions();
 
-  const styles = useCreateStyles(({ theme }) => ({
+  const styles = useCreateStyles(({ theme, responsiveValue }) => ({
     container: {
       width,
       flexDirection: "row",
@@ -18,6 +26,7 @@ export function ToneSelector() {
       paddingLeft: 55,
     },
     text: theme.typography.h2.extend({
+      width: responsiveValue({ desktop: 130, mobile: 100 }),
       paddingRight: theme.spacings.l,
     }),
     slider: { width: width - 200 },
@@ -27,14 +36,16 @@ export function ToneSelector() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>tone: {toneRange}</Text>
+      <Text style={styles.text}>
+        {label}: {value}%
+      </Text>
       <Slider
         style={styles.slider}
-        value={toneRange}
-        step={50}
+        value={value}
+        step={steps}
         minimumValue={0}
         maximumValue={100}
-        onValueChange={setToneRange}
+        onValueChange={setValue}
         trackStyle={styles.trackStyle}
         thumbStyle={styles.thumbStyle}
       />

@@ -36,5 +36,7 @@ export const lineChartProps = {
 
 export const lineProps = {
   dot: false,
-  type: "monotone" as CurveType,
+  type: "linear" as CurveType,
 };
+
+export const getDataKey = ({ id }: Pedal) => `${id}_${DataKeys.db}`;

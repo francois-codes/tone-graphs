@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
-import * as R from "ramda";
+import React, { useCallback, useMemo } from "react";
 import { View } from "react-native";
+import * as R from "ramda";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid } from "recharts";
-import { xAxisProps, yAxisProps, DataKeys, lineChartProps, lineProps } from "./settings";
+import { xAxisProps, yAxisProps, lineChartProps, lineProps, getDataKey } from "./settings";
 
-import { useToneRange } from "src/hooks/useToneRange";
+import { useRange } from "src/hooks/useRange";
 import { useChartDimensions } from "src/hooks/useChartDimensions";
-import { ToneSelector } from "src/components/ToneSelector";
+import { PropSelector } from "src/components/PropSelector";
 import { createStyles } from "../Theme";
-import { useSetVisiblePedals, useVisiblePedals } from "src/hooks/useVisiblePedals";
+import { getGraphData, getPropOrFirst } from "./data";
+import { useVisiblePedals } from "src/hooks/useVisiblePedals";
 
 type Props = {
   pedals: Pedal[];
@@ -25,55 +26,24 @@ const styles = createStyles(({ theme }) => ({
 }));
 
 export function Chart({ pedals }: Props) {
-  const [toneRange] = useToneRange();
+  const [toneRange, setToneRange] = useRange("tone");
+  const [gainRange, setGainRange] = useRange("gain");
   const visiblePedals = useVisiblePedals();
-
   const toneValue = `${toneRange}%`;
+  const gainValue = `${gainRange}%`;
 
-  const formattedData = R.compose(
-    R.apply(R.concat),
-    R.map(
-      R.compose(
-        R.prop(toneValue),
-        (pedal) => R.groupBy(R.prop("tone"), pedal.datapoints || []),
-        (pedal) =>
-          R.evolve(
-            {
-              datapoints: R.map(
-                R.compose(
-                  (datapoint) => R.assoc(pedal.id + "_db", datapoint.db, datapoint),
-                  (datapoint) => R.assoc("id", pedal.id, datapoint),
-                ),
-              ),
-            },
-            pedal,
-          ),
-      ),
-    ),
-  )(pedals);
+  const select = useCallback(R.compose(getPropOrFirst(gainValue), getPropOrFirst(toneValue)), [gainValue, toneValue]);
 
-  const setPedalVisible = useSetVisiblePedals();
-
-  useEffect(() => {
-    pedals.forEach((pedal) => {
-      setPedalVisible(pedal, true);
-    });
-  }, []);
+  const graphData = useMemo(() => getGraphData(select, pedals), [select, pedals, visiblePedals.length]);
 
   const { width, height } = useChartDimensions();
 
   return (
     <View style={styles.container}>
       <View style={styles.chartContainer}>
-        <LineChart height={height} width={width} data={formattedData} {...lineChartProps}>
+        <LineChart height={height} width={width} data={graphData} {...lineChartProps}>
           {visiblePedals.map((pedal, index) => (
-            <Line
-              key={index}
-              dataKey={pedal.id + "_" + DataKeys.db}
-              strokeWidth={3}
-              stroke={pedal.color}
-              {...lineProps}
-            />
+            <Line key={index} dataKey={getDataKey(pedal)} strokeWidth={3} stroke={pedal.color} {...lineProps} />
           ))}
 
           <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
@@ -81,7 +51,8 @@ export function Chart({ pedals }: Props) {
           <YAxis {...yAxisProps} />
         </LineChart>
       </View>
-      <ToneSelector />
+      <PropSelector label="Tone" value={toneRange} setValue={setToneRange} />
+      <PropSelector label="Gain" value={gainRange} setValue={setGainRange} />
     </View>
   );
 }
