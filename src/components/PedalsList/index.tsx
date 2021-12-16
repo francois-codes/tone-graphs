@@ -11,6 +11,7 @@ export function PedalsList({ pedals }: { pedals: Pedal[] }) {
       flex: 1,
       flexDirection: "column",
       alignSelf: "stretch",
+      justifyContent: "flex-start",
       padding: theme.spacings.m,
     },
   }));

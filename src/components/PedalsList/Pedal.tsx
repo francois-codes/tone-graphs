@@ -6,7 +6,6 @@ import { Buttons } from "./Buttons";
 export function Pedal({ pedal }: { pedal: Pedal }) {
   const styles = useCreateStyles(({ theme, responsiveValue }) => ({
     container: {
-      flex: 1,
       flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
