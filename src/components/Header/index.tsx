@@ -20,7 +20,13 @@ export function Header() {
     logoContainer: {
       marginBottom: responsiveValue<number>({ mobile: 6, desktop: 12 }),
     },
+    textContainer: {
+      flex: 1,
+      flexDirection: "row",
+      alignItems: "flex-end",
+    },
     text: theme.typography.h0.extend({ marginHorizontal: theme.spacings.m }),
+    beta: theme.typography.p.extend({ fontStyle: "italic", fontWeight: "800" }),
   }));
 
   return (
@@ -28,7 +34,10 @@ export function Header() {
       <View style={styles.logoContainer}>
         <Image source={{ uri: logo }} style={styles.logo as ImageStyle} resizeMode="contain" />
       </View>
-      <Text style={styles.text}>Tone Graphs</Text>
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>Tone Graphs</Text>
+        <Text style={styles.beta}>beta</Text>
+      </View>
     </View>
   );
 }
