@@ -26,7 +26,16 @@ export function Graph(props: Props) {
       ))}
 
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-      <Tooltip />
+      <Tooltip
+        formatter={(value, name) => {
+          return [Math.round(value * 100) / 100, name];
+        }}
+        label={(value, name) => {
+          [Math.round(value * 100) / 100, name];
+        }}
+        labelStyle={{ fontFamily: "open sans", fontSize: 10 }}
+        itemStyle={{ fontFamily: "open sans", fontSize: 10 }}
+      />
       <XAxis {...xAxisProps} />
       <YAxis {...yAxisProps} />
     </LineChart>

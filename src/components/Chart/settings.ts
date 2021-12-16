@@ -29,6 +29,7 @@ export const yAxisProps: YAxisProps = {
   domain: dbRange,
   name: "Decibels (dB)",
   style,
+  interval: "preserveStartEnd",
 };
 
 export const lineChartProps = {
