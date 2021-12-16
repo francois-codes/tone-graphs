@@ -15,6 +15,10 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         <meta property="og:title" content="Tone Graphs" />
+        <meta
+          property="og:description"
+          content="Tone Graphs is a database for visualizing and comparing frequency responses of boost, overdrive, distortion, and fuzz pedals"
+        />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.tonegraphs.com/" />
         <meta property="og:image" content="/tone-graph-logo.png" />
