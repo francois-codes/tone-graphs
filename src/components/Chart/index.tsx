@@ -20,16 +20,22 @@ const styles = createStyles(({ theme }) => ({
   },
 }));
 
-export function Chart() {
+type Props = {
+  pedal?: Pedal;
+};
+
+export function Chart({ pedal }: Props) {
   const [toneRange, setToneRange] = useRange("tone");
   const [gainRange, setGainRange] = useRange("gain");
   const visiblePedals = useVisiblePedals();
   const toneValue = `${toneRange}%`;
   const gainValue = `${gainRange}%`;
 
+  const pedalsToGraph = pedal ? [pedal] : visiblePedals;
+
   const select = useCallback(R.compose(getPropOrFirst(gainValue), getPropOrFirst(toneValue)), [gainValue, toneValue]);
 
-  const graphData = useMemo(() => getGraphData(select, visiblePedals), [select, visiblePedals.length]);
+  const graphData = useMemo(() => getGraphData(select, pedalsToGraph), [select, pedalsToGraph.length]);
 
   const { width, height } = useChartDimensions();
 

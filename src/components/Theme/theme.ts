@@ -1,5 +1,5 @@
 import * as R from "ramda";
-import { TextStyle, ScaledSize } from "react-native";
+import { TextStyle, ViewStyle, ScaledSize } from "react-native";
 
 const dark = "#343536";
 const lighterDark = "#4a4b4c";
@@ -10,6 +10,15 @@ const black = "#000000";
 
 const primary = "#00bcd4";
 const secondary = "#ff9800";
+
+const spacings = {
+  xs: 3,
+  s: 6,
+  m: 12,
+  l: 24,
+  xl: 48,
+  xxl: 96,
+};
 
 function themeStyle<T>(styles: T) {
   function getStyles(): T {
@@ -49,14 +58,7 @@ export const theme = (dimensions: ScaledSize) => ({
     darkerLight,
     lighterDark,
   },
-  spacings: {
-    xs: 3,
-    s: 6,
-    m: 12,
-    l: 24,
-    xl: 48,
-    xxl: 96,
-  },
+  spacings,
   typography: {
     h0: themeStyle<TextStyle>({
       fontSize: responsiveValue<number>({ desktop: 48, mobile: 30 }, dimensions),
@@ -86,6 +88,17 @@ export const theme = (dimensions: ScaledSize) => ({
       fontSize: 10,
       fontFamily: "Open sans",
       fontWeight: "300",
+    }),
+  },
+  forms: {
+    textInput: themeStyle<ViewStyle>({
+      borderWidth: 1,
+      borderColor: darkerLight,
+      borderRadius: 4,
+      height: responsiveValue<number>({ desktop: 48, mobile: 40 }, dimensions),
+      width: "100%",
+      paddingHorizontal: spacings.m,
+      marginBottom: spacings.m,
     }),
   },
 });
