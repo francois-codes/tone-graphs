@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-class-properties": "^7.16.5",
     "@babel/preset-typescript": "^7.16.0",
     "@expo/next-adapter": "~2.1.52",
     "@testing-library/jest-dom": "5.14.1",
