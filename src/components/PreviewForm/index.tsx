@@ -25,8 +25,6 @@ export function PreviewForm(props: Props) {
     buttonContainer: { flexDirection: "row" },
   }));
 
-  const buttonsEnabled = props.state.name && props.state.datapoints?.length > 0;
-
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Pedal data preview</Text>
@@ -47,24 +45,25 @@ export function PreviewForm(props: Props) {
           icon="save"
           onPress={() => {
             const data = props.state.datapoints;
-            const form = document.createElement("form");
-            form.setAttribute("method", "post");
-            form.setAttribute("action", "/api/datapoints.json");
-            form.setAttribute("target", "_blank");
 
-            const hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", "data");
-            hiddenField.setAttribute("value", JSON.stringify(data));
+            if (data?.length > 0) {
+              const form = document.createElement("form");
+              form.setAttribute("method", "post");
+              form.setAttribute("action", "/api/datapoints.json");
+              form.setAttribute("target", "_blank");
 
-            form.appendChild(hiddenField);
-            const nextRoot = document.getElementById("__next");
-            nextRoot.appendChild(form);
+              const hiddenField = document.createElement("input");
+              hiddenField.setAttribute("type", "hidden");
+              hiddenField.setAttribute("name", "data");
+              hiddenField.setAttribute("value", JSON.stringify(data));
 
-            form.submit();
+              form.appendChild(hiddenField);
+              const nextRoot = document.getElementById("__next");
+              nextRoot.appendChild(form);
+
+              form.submit();
+            }
           }}
-          color={buttonsEnabled ? "lightgray" : "#343536"}
-          disabled={!buttonsEnabled}
         />
       </View>
     </View>
