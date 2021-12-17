@@ -3,18 +3,19 @@ declare interface DataPoint {
   db: number;
   gain?: string;
   tone?: string;
-  pedalName: string;
+  pedalName?: string;
 }
 
 declare type ToneGraph = DataPoint[];
 
+declare type ToneGraphData = Record<string, Record<string, DataPoint[]>>;
 declare interface Pedal {
   id: string;
   color: string;
   name: string;
   brand: string;
   image?: string;
-  datapoints: ToneGraph;
+  datapoints: DataPoint[];
 }
 
 declare type ResponsiveSpecs<T> = {
