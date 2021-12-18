@@ -7,8 +7,10 @@ import { useChartDimensions } from "src/hooks/useChartDimensions";
 import { PropSelector } from "src/components/PropSelector";
 import { createStyles } from "../Theme";
 import { getGraphData, getPropOrFirst } from "./data";
-import { useVisiblePedals } from "src/hooks/useVisiblePedals";
+
 import { Graph } from "./Graph";
+import { useRecoilValue } from "recoil";
+import { visiblePedalsSelector } from "src/atoms/pedals";
 
 const styles = createStyles(({ theme }) => ({
   container: {
@@ -27,7 +29,7 @@ type Props = {
 export function Chart({ pedal }: Props) {
   const [toneRange, setToneRange] = useRange("tone");
   const [gainRange, setGainRange] = useRange("gain");
-  const visiblePedals = useVisiblePedals();
+  const visiblePedals = useRecoilValue(visiblePedalsSelector);
   const toneValue = `${toneRange}%`;
   const gainValue = `${gainRange}%`;
 

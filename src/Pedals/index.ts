@@ -10,7 +10,7 @@ function getRandomColor() {
 }
 
 function parseRemotePedalData(items): Pedal[] {
-  return items.map(({ fields, sys }) => {
+  return items.map(({ fields, sys }, index) => {
     const { name, brand, image, datapoints } = fields;
     const { id } = sys;
 
@@ -21,6 +21,8 @@ function parseRemotePedalData(items): Pedal[] {
       image: image.fields.file.url,
       color: getRandomColor(),
       datapoints,
+      visible: index < 2,
+      selected: datapoints.length > 0,
     };
   });
 }

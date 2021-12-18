@@ -8,22 +8,21 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { Layout } from "./components/Layout/Layout";
 import { PedalsList } from "./components/PedalsList";
-import { useSetVisiblePedals } from "src/hooks/useVisiblePedals";
 import { InfoText } from "./components/InfoText";
 import { TopLinks } from "./components/TopLinks";
+import { Modal } from "./components/Modal";
+import { useSetRecoilState } from "recoil";
+import { pedalsAtom } from "./atoms/pedals";
 
 type Props = {
   pedals: Pedal[];
 };
 
 export function Home({ pedals }: Props) {
-  const pedalsPreview = pedals.filter((pedal) => pedal?.datapoints?.length > 0);
-  const setPedalVisible = useSetVisiblePedals();
+  const setPedals = useSetRecoilState(pedalsAtom);
 
   useEffect(() => {
-    pedalsPreview.forEach((pedal) => {
-      setPedalVisible(pedal, true);
-    });
+    setPedals(pedals);
   }, []);
 
   return (
@@ -34,10 +33,11 @@ export function Home({ pedals }: Props) {
           <TopLinks />
           <Layout>
             <Chart />
-            <PedalsList pedals={pedals} />
+            <PedalsList />
           </Layout>
           <InfoText />
         </Container>
+        <Modal />
       </Loader>
     </SafeAreaProvider>
   );

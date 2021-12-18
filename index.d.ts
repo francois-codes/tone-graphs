@@ -16,6 +16,8 @@ declare interface Pedal {
   brand: string;
   image?: string;
   datapoints: DataPoint[];
+  selected: boolean;
+  visible: boolean;
 }
 
 declare type ResponsiveSpecs<T> = {
