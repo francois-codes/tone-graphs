@@ -10,13 +10,15 @@ export function PedalCard({ pedal }: { pedal: Pedal }) {
       height: responsiveValue({ desktop: 200, mobile: 120 }),
       borderRadius: 10,
       borderColor: theme.colors.lighterDark,
-      borderWidth: 1,
+      borderWidth: 2,
       margin: theme.spacings.m,
       alignItems: "center",
       justifyContent: "center",
+      opacity: 0.6,
     },
     selected: {
       borderColor: theme.colors.primary,
+      opacity: 1,
     },
     image: {
       width: responsiveValue({ desktop: 60, tablet: 40, mobile: 30 }),
