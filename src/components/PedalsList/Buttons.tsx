@@ -33,7 +33,7 @@ export function Buttons({ pedal }: { pedal: Pedal }) {
     <View style={styles.container}>
       <View style={[styles.color, { backgroundColor: pedal.color }]} />
       {buttons.map((button, index) => (
-        <Button key={index} {...button} disabled={pedal.datapoints.length === 0} />
+        <Button key={index} {...button} />
       ))}
     </View>
   );
