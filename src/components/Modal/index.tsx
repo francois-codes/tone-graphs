@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { useRecoilValue } from "recoil";
 import { modalsAtom, Modals } from "src/atoms/modals";
 import { useCreateStyles } from "../Theme";
@@ -14,6 +14,11 @@ export function Modal() {
 
   const styles = useCreateStyles(({ theme }) => ({
     backdrop: {
+      position: "absolute",
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
       backgroundColor: "rgba(31,31,31,0.7)",
       flex: 1,
       justifyContent: "flex-start",
@@ -23,8 +28,7 @@ export function Modal() {
       borderColor: theme.colors.lighterDark,
       borderWidth: 1,
       borderRadius: 6,
-      width: "100vw",
-      height: "100vh",
+      flex: 1,
     },
   }));
 
@@ -37,11 +41,9 @@ export function Modal() {
   const Component = ModalsMap[modal];
 
   return (
-    <View style={StyleSheet.absoluteFill}>
-      <View style={styles.backdrop}>
-        <View style={styles.modalContainer}>
-          <Component />
-        </View>
+    <View style={styles.backdrop}>
+      <View style={styles.modalContainer}>
+        <Component />
       </View>
     </View>
   );

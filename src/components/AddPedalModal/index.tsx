@@ -22,11 +22,7 @@ const pedalMatches = R.curry((query, pedal) => {
 export function AddPedalModal() {
   const styles = useCreateStyles(({ theme }) => ({
     container: {
-      flex: 1,
       padding: theme.spacings.l,
-      overflow: "hidden",
-      width: "100vw",
-      height: "100vh",
     },
     pedalsContainer: {
       flexWrap: "wrap",
