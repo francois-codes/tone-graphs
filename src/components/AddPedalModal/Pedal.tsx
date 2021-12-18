@@ -6,8 +6,8 @@ import { useCreateStyles } from "../Theme";
 export function PedalCard({ pedal }: { pedal: Pedal }) {
   const styles = useCreateStyles(({ theme, responsiveValue }) => ({
     container: {
-      width: responsiveValue({ desktop: 200, mobile: 120 }),
-      height: responsiveValue({ desktop: 200, mobile: 120 }),
+      width: responsiveValue({ desktop: 200, mobile: 138 }),
+      height: responsiveValue({ desktop: 200, mobile: 138 }),
       borderRadius: 10,
       borderColor: theme.colors.lighterDark,
       borderWidth: 2,
@@ -15,17 +15,30 @@ export function PedalCard({ pedal }: { pedal: Pedal }) {
       alignItems: "center",
       justifyContent: "center",
       opacity: 0.6,
+      overflow: "hidden",
     },
     selected: {
       borderColor: theme.colors.primary,
       opacity: 1,
     },
     image: {
-      width: responsiveValue({ desktop: 60, tablet: 40, mobile: 30 }),
-      height: responsiveValue({ desktop: 60, tablet: 40, mobile: 30 }),
-      margin: theme.spacings.l,
+      width: responsiveValue({ desktop: 80, tablet: 70, mobile: 50 }),
+      height: responsiveValue({ desktop: 80, tablet: 70, mobile: 50 }),
+      margin: responsiveValue({
+        desktop: theme.spacings.l,
+        tablet: theme.spacings.m,
+        mobile: theme.spacings.s,
+      }),
     },
-    title: theme.typography.h2.extend({ fontWeight: "800" }),
+    title: theme.typography.h2.extend({
+      fontWeight: "800",
+      textAlign: "center",
+      paddingHorizontal: responsiveValue({
+        desktop: theme.spacings.m,
+        tablet: theme.spacings.s,
+        mobile: theme.spacings.s,
+      }),
+    }),
     brand: theme.typography.p.extend({ fontWeight: "600" }),
   }));
 
