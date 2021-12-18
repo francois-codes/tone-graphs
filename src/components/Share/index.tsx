@@ -22,10 +22,16 @@ function shareByMail(text) {
 }
 
 export function Share() {
-  const styles = useCreateStyles(({ theme }) => ({
+  const styles = useCreateStyles(({ theme, responsiveValue }) => ({
     container: {
-      flexDirection: "row",
-      alignItems: "center",
+      flexDirection: responsiveValue({
+        desktop: "row",
+        mobile: "column",
+      }),
+      alignItems: responsiveValue({
+        desktop: "center",
+        mobile: "flex-start",
+      }),
       justifyContent: "flex-start",
       width: "100%",
     },
