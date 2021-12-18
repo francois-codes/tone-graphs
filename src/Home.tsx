@@ -10,6 +10,7 @@ import { Layout } from "./components/Layout/Layout";
 import { PedalsList } from "./components/PedalsList";
 import { InfoText } from "./components/InfoText";
 import { TopLinks } from "./components/TopLinks";
+import { Share } from "./components/Share";
 import { Modal } from "./components/Modal";
 import { useSetRecoilState } from "recoil";
 import { pedalsAtom } from "./atoms/pedals";
@@ -31,6 +32,7 @@ export function Home({ pedals }: Props) {
         <Container>
           <Header />
           <TopLinks />
+          <Share />
           <Layout>
             <Chart />
             <PedalsList />

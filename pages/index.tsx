@@ -17,8 +17,22 @@ export default function App({ pedals }: Props) {
   );
 }
 
-export async function getServerSideProps() {
+function decodeState(string) {
+  if (typeof string === "undefined") return null;
+
+  try {
+    const rawState = decodeURIComponent(string);
+    const decodedRawState = Buffer.from(rawState, "base64").toString("utf8");
+    return JSON.parse(decodedRawState);
+  } catch (e) {
+    return null;
+  }
+}
+
+export async function getServerSideProps(ctx) {
+  const state = decodeState(ctx.query.p);
+
   return {
-    props: { pedals: await getPedals() },
+    props: { pedals: await getPedals(state) },
   };
 }
