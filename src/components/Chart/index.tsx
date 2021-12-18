@@ -12,13 +12,14 @@ import { Graph } from "./Graph";
 import { useRecoilValue } from "recoil";
 import { visiblePedalsSelector } from "src/atoms/pedals";
 
-const styles = createStyles(({ theme }) => ({
+const styles = createStyles(({ theme, responsiveValue }) => ({
   container: {
     flexDirection: "column",
   },
   chartContainer: {
     marginLeft: -15,
-    marginTop: theme.spacings.l,
+    marginTop: responsiveValue({ desktop: theme.spacings.l, mobile: theme.spacings.s }),
+    marginBottom: responsiveValue({ desktop: theme.spacings.l, mobile: theme.spacings.s }),
   },
 }));
 

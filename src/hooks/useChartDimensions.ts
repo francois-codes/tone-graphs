@@ -6,7 +6,7 @@ export function useChartDimensions() {
 
   const chartWidth = useResponsiveValue({
     mobile: width - 50,
-    tablet: Math.min(width - 50, 400),
+    tablet: Math.min(width - 50, 600),
     desktop: Math.min(width - 50, 800),
   });
 

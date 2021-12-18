@@ -40,7 +40,7 @@ export function Graph(props: Props) {
 
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
       <Tooltip
-        formatter={(value, name) => [Math.round(value * 100) / 100, name]}
+        formatter={(value, name) => [`${Math.round(value * 100) / 100} dB`, name]}
         labelFormatter={(value) => `Frequency: ${formatFrequency(value)}`}
         labelStyle={styles.tooltip}
         itemStyle={styles.tooltip}
@@ -50,7 +50,7 @@ export function Graph(props: Props) {
         <Label position="bottom" value="frequency" style={styles.label} />
       </XAxis>
       <YAxis {...yAxisProps}>
-        <Label position="left" value="dB" offset={-20} style={styles.label} />
+        <Label position="top" value="dB" style={styles.label} />
       </YAxis>
     </LineChart>
   );
