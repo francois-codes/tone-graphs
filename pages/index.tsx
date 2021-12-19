@@ -31,8 +31,10 @@ function decodeState(string) {
 
 export async function getServerSideProps(ctx) {
   const state = decodeState(ctx.query.p);
+  const preview = ctx.query.preview;
+  const pedals = await getPedals(state, preview);
 
   return {
-    props: { pedals: await getPedals(state) },
+    props: { pedals: pedals },
   };
 }
