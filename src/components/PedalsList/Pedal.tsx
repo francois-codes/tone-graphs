@@ -2,24 +2,10 @@ import React from "react";
 import { View, Text, Image, ImageStyle } from "react-native";
 import { useCreateStyles } from "../Theme";
 import { Buttons } from "./Buttons";
+import { PedalContainer } from "./PedalContainer";
 
 export function Pedal({ pedal }: { pedal: Pedal }) {
   const styles = useCreateStyles(({ theme, responsiveValue }) => ({
-    container: {
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "center",
-      borderColor: theme.colors.dark,
-      borderWidth: 1,
-      backgroundColor: theme.colors.white,
-      borderRadius: 10,
-      padding: theme.spacings.m,
-      marginVertical: theme.spacings.m,
-      height: responsiveValue({ mobile: 70, desktop: 91 }),
-      maxHeight: responsiveValue({ mobile: 70, desktop: 91 }),
-      overflow: "hidden",
-      opacity: pedal.datapoints.length === 0 ? 0.3 : 1,
-    },
     image: {
       width: responsiveValue({ desktop: 60, tablet: 40, mobile: 30 }),
       height: responsiveValue({ desktop: 60, tablet: 40, mobile: 30 }),
@@ -30,7 +16,7 @@ export function Pedal({ pedal }: { pedal: Pedal }) {
   }));
 
   return (
-    <View style={styles.container}>
+    <PedalContainer>
       <Image source={{ uri: pedal.image }} style={styles.image as ImageStyle} resizeMode="contain" />
       <View style={styles.titleContainer}>
         <Text style={styles.title} numberOfLines={1}>
@@ -41,6 +27,6 @@ export function Pedal({ pedal }: { pedal: Pedal }) {
         </Text>
       </View>
       <Buttons pedal={pedal} />
-    </View>
+    </PedalContainer>
   );
 }

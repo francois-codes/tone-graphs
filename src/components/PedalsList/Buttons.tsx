@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { useIsPedalVisible, useSetVisiblePedals } from "src/hooks/useVisiblePedals";
+import { useSetPedalState } from "src/atoms/pedals";
 import { Button } from "../Button";
 import { createStyles } from "../Theme";
 
@@ -19,22 +19,21 @@ const styles = createStyles(({ theme }) => ({
 }));
 
 export function Buttons({ pedal }: { pedal: Pedal }) {
-  const isVisible = useIsPedalVisible(pedal);
-  const setPedalVisible = useSetVisiblePedals();
+  const { setPedalVisible, setPedalSelected } = useSetPedalState();
 
   const buttons = [
     {
-      icon: isVisible ? "visibility-off" : "visibility",
-      onPress: () => setPedalVisible(pedal, !isVisible),
+      icon: pedal.visible ? "visibility-off" : "visibility",
+      onPress: () => setPedalVisible(pedal, !pedal.visible),
     },
-    // { icon: "delete", onPress: () => console.log("delete") },
+    { icon: "delete", onPress: () => setPedalSelected(pedal, !pedal.selected) },
   ];
 
   return (
     <View style={styles.container}>
-      {/* <View style={[styles.color, { backgroundColor: pedal.color }]} /> */}
+      <View style={[styles.color, { backgroundColor: pedal.color }]} />
       {buttons.map((button, index) => (
-        <Button key={index} {...button} color={pedal.color} disabled={pedal.datapoints.length === 0} />
+        <Button key={index} {...button} />
       ))}
     </View>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Label } from "recharts";
 import { xAxisProps, yAxisProps, lineChartProps, lineProps, DataKeys } from "./settings";
 
 type Props = {
@@ -7,6 +7,19 @@ type Props = {
   width: number;
   height: number;
 };
+
+const styles = {
+  tooltip: { fontFamily: "open sans", fontSize: 12, fontWeight: "600" },
+  label: { fontFamily: "open sans", fontSize: 14, fontWeight: "600" },
+};
+
+function formatFrequency(frequency) {
+  if (frequency < 1000) {
+    return `${Math.round(frequency)} Hz`;
+  }
+
+  return `${Math.round(frequency / 100) / 10} kHz`;
+}
 
 export function Graph(props: Props) {
   const { graphData, width, height } = props;
@@ -27,17 +40,18 @@ export function Graph(props: Props) {
 
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
       <Tooltip
-        formatter={(value, name) => {
-          return [Math.round(value * 100) / 100, name];
-        }}
-        label={(value, name) => {
-          [Math.round(value * 100) / 100, name];
-        }}
-        labelStyle={{ fontFamily: "open sans", fontSize: 10 }}
-        itemStyle={{ fontFamily: "open sans", fontSize: 10 }}
+        formatter={(value, name) => [`${Math.round(value * 100) / 100} dB`, name]}
+        labelFormatter={(value) => `Frequency: ${formatFrequency(value)}`}
+        labelStyle={styles.tooltip}
+        itemStyle={styles.tooltip}
       />
-      <XAxis {...xAxisProps} />
-      <YAxis {...yAxisProps} />
+
+      <XAxis {...xAxisProps}>
+        <Label position="bottom" value="frequency" style={styles.label} />
+      </XAxis>
+      <YAxis {...yAxisProps}>
+        <Label position="top" value="dB" style={styles.label} />
+      </YAxis>
     </LineChart>
   );
 }

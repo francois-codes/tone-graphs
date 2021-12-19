@@ -1,5 +1,12 @@
 import client from "../data/client";
 
+type PedalState = {
+  id: string;
+  selected: boolean;
+  visible: boolean;
+  color: string;
+}[];
+
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
   let color = "#";
@@ -9,24 +16,28 @@ function getRandomColor() {
   return color;
 }
 
-function parseRemotePedalData(items): Pedal[] {
-  return items.map(({ fields, sys }) => {
+function parseRemotePedalData(items, state): Pedal[] {
+  return items.map(({ fields, sys }, index) => {
     const { name, brand, image, datapoints } = fields;
     const { id } = sys;
+
+    const pedalState = state ? state.find((s) => s.id === id) : null;
 
     return {
       id,
       name,
       brand,
       image: image.fields.file.url,
-      color: getRandomColor(),
+      color: pedalState ? pedalState.color : getRandomColor(),
       datapoints,
+      visible: pedalState ? pedalState.visible : index < 2,
+      selected: pedalState ? pedalState.selected : datapoints.length > 0,
     };
   });
 }
 
-export async function getPedals(): Promise<Pedal[]> {
+export async function getPedals(state?: PedalState): Promise<Pedal[]> {
   const { items } = await client.getEntries("pedal");
 
-  return parseRemotePedalData(items);
+  return parseRemotePedalData(items, state);
 }
