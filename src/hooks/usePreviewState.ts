@@ -25,9 +25,17 @@ const initialState: Pedal = {
   visible: true,
 };
 
-function computeDataPoints(text: string): DataPoint[] {
-  (text) => console.log("added datapoints", { text });
-  return csv2json(text);
+function computeDataPoints(textOrObj: string): DataPoint[] {
+  try {
+    const json = JSON.parse(textOrObj);
+    console.log({ json, textOrObj });
+
+    return json;
+  } catch (e) {
+    const csv = csv2json(textOrObj);
+    console.log({ csv, textOrObj });
+    return csv;
+  }
 }
 
 const reducer = (state, action) => {
