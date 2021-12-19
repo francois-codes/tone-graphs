@@ -32,10 +32,6 @@ export function Modal() {
     },
   }));
 
-  useEffect(() => {
-    console.log("modal", { modal });
-  }, [modal]);
-
   if (!modal) return null;
 
   const Component = ModalsMap[modal];

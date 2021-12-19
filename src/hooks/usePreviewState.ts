@@ -21,6 +21,8 @@ const initialState: Pedal = {
   brand: "",
   image: "",
   datapoints: [],
+  selected: true,
+  visible: true,
 };
 
 function computeDataPoints(text: string): DataPoint[] {

@@ -45,8 +45,6 @@ export function AddPedalModal() {
 
   const results = R.unless(() => R.isNil(search), R.filter(pedalMatches(search)))(pedals);
 
-  console.log({ results, search });
-
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
