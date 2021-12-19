@@ -1,7 +1,7 @@
 import { atom, useRecoilState } from "recoil";
 
 const toneRange = atom({ key: "toneRange", default: 50 });
-const gainRange = atom({ key: "gainRange", default: 100 });
+const gainRange = atom({ key: "gainRange", default: 50 });
 
 type Range = "tone" | "gain";
 
