@@ -48,12 +48,12 @@ export function PedalCard({ pedal }: { pedal: Pedal }) {
   const { setDatapointsForPedal } = useSetDatapoints();
 
   const selectPedal = useCallback(async () => {
+    setPedalSelected(pedal, !pedal.selected);
+
     if (!pedal.selected && pedal.datapoints.length === 0) {
       const datapoints = await fetchDataPoints(pedal);
       setDatapointsForPedal(pedal, datapoints);
     }
-
-    setPedalSelected(pedal, !pedal.selected);
   }, [pedal.datapoints.length, pedal.selected]);
 
   return (
