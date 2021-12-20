@@ -10,5 +10,7 @@ export function useShareLink() {
 
   const encodedPayload = encodeState(payload);
 
-  return `${window.location.origin}?p=${encodedPayload}`;
+  const previewFlag = window.location.search.includes("preview=true") ? "&preview=true" : "";
+
+  return `${window.location.origin}?p=${encodedPayload}${previewFlag}`;
 }
