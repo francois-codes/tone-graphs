@@ -41,7 +41,7 @@ async function extractDataFromFile(fileName, folderPath) {
 
   const lines = fileContent.split("\n");
 
-  return lines.reduce((data, line) => {
+  return lines.reduce((data, line, index) => {
     const [frequency, db] = line.split("\t");
 
     if (Number.isNaN(Number(frequency)) || Number.isNaN(Number(db))) return data;
@@ -51,7 +51,6 @@ async function extractDataFromFile(fileName, folderPath) {
     const dataForLine = { frequency: Number(frequency), db: Number(db) };
 
     if (!fileName.includes("pink noise")) {
-      dataForLine.name = name;
       const { tone, gain } = getToneGainValue(fileName);
       dataForLine.tone = tone;
       dataForLine.gain = gain;
@@ -111,9 +110,11 @@ async function run() {
     return { ...point, db: point.db - maxDbPoint };
   });
 
-  console.log(JSON.stringify(normalizedData));
+  // console.log(JSON.stringify(normalizedData));
+  // console.log(JSON.stringify(normalizedData));
 
   // console.log(toCsv(normalizedData));
+  await fs.promises.writeFile(path.join(folderPath, "data.json"), JSON.stringify(normalizedData));
 }
 
 run();
