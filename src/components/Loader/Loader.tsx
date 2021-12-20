@@ -1,10 +1,15 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { useWindowDimensions, View, ImageStyle, Animated, Easing } from "react-native";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { logo } from "src/assets";
+import { pedalsAtom } from "src/atoms/pedals";
+import { fetchPedals } from "src/Pedals/fetch";
 import { createStyles } from "../Theme";
 
 type Props = {
   children: React.ReactNode;
+  state: PedalState;
+  preview: boolean;
 };
 
 const styles = createStyles(() => ({
@@ -21,8 +26,10 @@ const styles = createStyles(() => ({
   },
 }));
 
-export function Loader({ children }: Props) {
+export function Loader({ children, state, preview }: Props) {
   const [loaded, setLoaded] = React.useState(false);
+  const setPedals = useSetRecoilState(pedalsAtom);
+  const pedals = useRecoilValue(pedalsAtom);
   const animatedValue = useRef(new Animated.Value(0)).current;
 
   const dimensions = useWindowDimensions();
@@ -39,9 +46,20 @@ export function Loader({ children }: Props) {
     Animated.loop(loop, { iterations: 10 }).start(() => animatedValue.setValue(0));
   }, []);
 
+  const loadPedals = useCallback(async () => {
+    const pedals = await fetchPedals(preview, state);
+    setPedals(pedals);
+  }, []);
+
   useEffect(() => {
-    if (!loaded && dimensions.width) setLoaded(true);
-  }, [dimensions.width]);
+    loadPedals();
+  }, []);
+
+  useEffect(() => {
+    if (pedals?.length > 0 && !loaded && dimensions.width) {
+      setLoaded(true);
+    }
+  }, [pedals?.length, loaded, dimensions.width]);
 
   if (loaded) {
     return <>{children}</>;

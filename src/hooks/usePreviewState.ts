@@ -28,12 +28,9 @@ const initialState: Pedal = {
 function computeDataPoints(textOrObj: string): DataPoint[] {
   try {
     const json = JSON.parse(textOrObj);
-    console.log({ json, textOrObj });
-
     return json;
   } catch (e) {
     const csv = csv2json(textOrObj);
-    console.log({ csv, textOrObj });
     return csv;
   }
 }

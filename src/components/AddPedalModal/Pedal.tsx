@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { View, Image, Text, ImageStyle, TouchableOpacity } from "react-native";
+import { useSetDatapoints } from "src/atoms/datapoints";
 import { useSetPedalState } from "src/atoms/pedals";
+import { fetchDataPoints } from "src/Pedals/fetch";
 import { useCreateStyles } from "../Theme";
 
 export function PedalCard({ pedal }: { pedal: Pedal }) {
@@ -43,9 +45,19 @@ export function PedalCard({ pedal }: { pedal: Pedal }) {
   }));
 
   const { setPedalSelected } = useSetPedalState();
+  const { setDatapointsForPedal } = useSetDatapoints();
+
+  const selectPedal = useCallback(async () => {
+    setPedalSelected(pedal, !pedal.selected);
+
+    if (!pedal.selected && pedal.datapoints.length === 0) {
+      const datapoints = await fetchDataPoints(pedal);
+      setDatapointsForPedal(pedal, datapoints);
+    }
+  }, [pedal.datapoints.length, pedal.selected]);
 
   return (
-    <TouchableOpacity onPress={() => setPedalSelected(pedal, !pedal.selected)}>
+    <TouchableOpacity onPress={selectPedal}>
       <View style={[styles.container, pedal.selected ? styles.selected : {}]}>
         <Image source={{ uri: pedal.image }} style={styles.image as ImageStyle} resizeMode="contain" />
         <Text style={styles.title}>{pedal.name}</Text>

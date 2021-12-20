@@ -6,6 +6,11 @@ declare interface DataPoint {
   pedalName?: string;
 }
 
+declare type DataPointResponse = {
+  id: string;
+  datapoints: DataPoint[];
+};
+
 declare type ToneGraph = DataPoint[];
 
 declare type ToneGraphData = Record<string, Record<string, DataPoint[]>>;
@@ -19,6 +24,13 @@ declare interface Pedal {
   selected: boolean;
   visible: boolean;
 }
+
+declare type PedalState = {
+  id: string;
+  selected: boolean;
+  visible: boolean;
+  color: string;
+}[];
 
 declare type ResponsiveSpecs<T> = {
   mobile: T;

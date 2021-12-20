@@ -1,0 +1,703 @@
+[
+  {
+    "frequency": 43.066406,
+    "db": -8.222408000000001,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 86.132812,
+    "db": -2.227382000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 129.199219,
+    "db": 0,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 172.265625,
+    "db": -0.5331570000000028,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 215.332031,
+    "db": -0.7535120000000006,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 258.398438,
+    "db": -0.5705300000000015,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 301.464844,
+    "db": -1.2129580000000004,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 344.53125,
+    "db": -2.0559650000000005,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 387.597656,
+    "db": -2.1908250000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 430.664062,
+    "db": -1.746148999999999,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 473.730469,
+    "db": -1.9449600000000018,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 516.796875,
+    "db": -2.1380710000000036,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 559.863281,
+    "db": -2.151055000000003,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 602.929688,
+    "db": -2.8659120000000016,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 645.996094,
+    "db": -3.4866959999999985,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 689.0625,
+    "db": -3.5406680000000037,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 732.128906,
+    "db": -4.604521000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 775.195312,
+    "db": -5.5606480000000005,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 818.261719,
+    "db": -6.553402000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 861.328125,
+    "db": -7.4287950000000045,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 904.394531,
+    "db": -6.350908,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 947.460938,
+    "db": -5.440699000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 990.527344,
+    "db": -6.2050440000000044,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1033.59375,
+    "db": -6.8045100000000005,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1076.660156,
+    "db": -7.008983000000001,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1119.726562,
+    "db": -7.202900000000003,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1162.792969,
+    "db": -7.801508000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1205.859375,
+    "db": -8.248675000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1248.925781,
+    "db": -8.881027,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1291.992188,
+    "db": -8.747768000000004,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1335.058594,
+    "db": -9.302864000000003,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1378.125,
+    "db": -9.978384000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1421.191406,
+    "db": -10.304882,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1464.257812,
+    "db": -9.874940000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1507.324219,
+    "db": -10.078968000000003,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1550.390625,
+    "db": -10.284286999999999,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1593.457031,
+    "db": -10.938884000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1636.523438,
+    "db": -11.481939,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1679.589844,
+    "db": -11.844771999999999,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1722.65625,
+    "db": -11.437103000000004,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1765.722656,
+    "db": -11.353976,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1808.789062,
+    "db": -12.522499000000003,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1851.855469,
+    "db": -13.064735000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1894.921875,
+    "db": -12.751554999999996,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1937.988281,
+    "db": -12.687217,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 1981.054688,
+    "db": -12.642838999999999,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2024.121094,
+    "db": -13.047363,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2067.1875,
+    "db": -13.371437,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2110.253906,
+    "db": -12.875604,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2153.320312,
+    "db": -13.929691000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2196.386719,
+    "db": -13.765251000000003,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2239.453125,
+    "db": -14.017422999999997,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2282.519531,
+    "db": -14.332639000000004,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2325.585938,
+    "db": -14.092676000000004,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2368.652344,
+    "db": -14.50008,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2411.71875,
+    "db": -15.004528,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2454.785156,
+    "db": -15.213214999999998,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2497.851562,
+    "db": -15.396415000000001,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2540.917969,
+    "db": -14.111074000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2583.984375,
+    "db": -14.727647999999999,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2627.050781,
+    "db": -16.074056000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2670.117188,
+    "db": -16.358942,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2713.183594,
+    "db": -16.056861000000005,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2756.25,
+    "db": -15.677847,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2799.316406,
+    "db": -15.511343000000004,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2842.382812,
+    "db": -16.095588,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2885.449219,
+    "db": -16.147152000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2928.515625,
+    "db": -15.991094999999994,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 2971.582031,
+    "db": -17.194183,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3014.648438,
+    "db": -17.393545000000003,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3057.714844,
+    "db": -17.465851,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3100.78125,
+    "db": -17.440083,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3143.847656,
+    "db": -16.878195,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3186.914062,
+    "db": -17.862404000000005,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3229.980469,
+    "db": -17.519705000000005,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3273.046875,
+    "db": -17.616957000000006,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3316.113281,
+    "db": -17.234457,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3359.179688,
+    "db": -17.470438,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3402.246094,
+    "db": -18.167730000000006,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3445.3125,
+    "db": -17.681588999999995,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3488.378906,
+    "db": -18.303922999999998,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3531.445312,
+    "db": -19.097822,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3574.511719,
+    "db": -18.452047,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3617.578125,
+    "db": -18.393659,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3660.644531,
+    "db": -18.573847,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3703.710938,
+    "db": -18.151007,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3746.777344,
+    "db": -18.781889,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3789.84375,
+    "db": -18.335627000000002,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3832.910156,
+    "db": -19.064466000000003,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3875.976562,
+    "db": -19.238188,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3919.042969,
+    "db": -19.295912,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 3962.109375,
+    "db": -20.090563000000003,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 4005.175781,
+    "db": -19.154509000000004,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 4048.242188,
+    "db": -19.319582000000004,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 4091.308594,
+    "db": -19.494771999999998,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 4134.375,
+    "db": -19.107774999999997,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 4177.441406,
+    "db": -20.487446999999996,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 4220.507812,
+    "db": -20.495726000000005,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 4263.574219,
+    "db": -19.783808,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  {
+    "frequency": 4306.640625,
+    "db": -20.097120000000004,
+    "name": "morning glory",
+    "tone": "0%",
+    "gain": "0%"
+  },
+  ... 11500 more items
+]

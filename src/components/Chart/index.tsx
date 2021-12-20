@@ -11,6 +11,7 @@ import { getGraphData, getPropOrFirst } from "./data";
 import { Graph } from "./Graph";
 import { useRecoilValue } from "recoil";
 import { visiblePedalsSelector } from "src/atoms/pedals";
+import { selectedDataPoints } from "src/atoms/datapoints";
 
 const styles = createStyles(({ theme, responsiveValue }) => ({
   container: {
@@ -27,6 +28,13 @@ type Props = {
   pedal?: Pedal;
 };
 
+const withDatapoints = (datapoints, pedals) => {
+  return pedals.map((pedal) => ({
+    ...pedal,
+    datapoints: datapoints?.[pedal.id] ?? [],
+  }));
+};
+
 export function Chart({ pedal }: Props) {
   const [toneRange, setToneRange] = useRange("tone");
   const [gainRange, setGainRange] = useRange("gain");
@@ -34,7 +42,8 @@ export function Chart({ pedal }: Props) {
   const toneValue = `${toneRange}%`;
   const gainValue = `${gainRange}%`;
 
-  const pedalsToGraph = pedal ? [pedal] : visiblePedals;
+  const datapoints = useRecoilValue(selectedDataPoints);
+  const pedalsToGraph = pedal ? [pedal] : withDatapoints(datapoints, visiblePedals);
 
   const select = useCallback(R.compose(getPropOrFirst(gainValue), getPropOrFirst(toneValue)), [gainValue, toneValue]);
 
