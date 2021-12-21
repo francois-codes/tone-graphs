@@ -38,5 +38,5 @@ export const lineChartProps = {
 
 export const lineProps = {
   dot: false,
-  type: "linear" as CurveType,
+  type: "monotone" as CurveType,
 };
