@@ -3124,6 +3124,11 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.4, ajv@^6.12.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+akima-interpolator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/akima-interpolator/-/akima-interpolator-1.0.0.tgz#eccdadfd441811cddc02c13c6fc0e69e247d45c8"
+  integrity sha512-CXySeO7xAjQ5RHtI/QanUJvtxx7WRWu8+M9zInxXtCJ83bJ8HvWQgWn16Ehrck+EA/t7fhVY8VauPdFwS9weyQ==
+
 alphanum-sort@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"

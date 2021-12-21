@@ -2,6 +2,7 @@
   "main": "main/index.js",
   "types": "index.d.ts",
   "dependencies": {
+    "akima-interpolator": "^1.0.0",
     "app-root-path": "^3.0.0",
     "contentful": "^9.1.5",
     "d3-scale": "^4.0.2",

@@ -3,6 +3,9 @@
 
 const path = require("path");
 const fs = require("fs");
+const loess = require("./loess");
+const science = require("./science");
+const Akima = require("akima-interpolator").default;
 
 const args = process.argv.slice(2);
 
@@ -116,8 +119,65 @@ async function run() {
   // console.log(JSON.stringify(normalizedData));
 
   // console.log(toCsv(normalizedData));
-  await fs.promises.writeFile(path.join(folderPath, "data.json"), JSON.stringify(normalizedData));
-  await fs.promises.writeFile(path.join(folderPath, "data.csv"), toCsv(normalizedData));
+
+  // const withLoess = loess(
+  //   normalizedData.filter(({ tone, gain }) => tone === "50%" && gain === "50%"),
+  //   0.03,
+  // ).map((point) => {
+  //   point.db = point.loess;
+  //   delete point.loess;
+
+  //   return point;
+  // });
+
+  // await fs.promises.writeFile(path.join(folderPath, "data.json"), JSON.stringify(normalizedData));
+  // await fs.promises.writeFile(path.join(folderPath, "data.csv"), toCsv(normalizedData));
+
+  // await fs.promises.writeFile(path.join(folderPath, "data-loess.json"), JSON.stringify(withLoess));
+
+  const t50g50 = normalizedData.filter(({ tone, gain }) => tone === "50%" && gain === "50%");
+
+  const [xval, yval] = t50g50.reduce(
+    ([x, y], point) => {
+      x.push(point.frequency);
+      y.push(point.db);
+
+      return [x, y];
+    },
+    [[], []],
+  );
+
+  // const loess1 = science.stats.loess(0.03)(xval, yval);
+  // const loess2 = science.stats.loess(0.1)(xval, yval);
+
+  // let loess = loess1;
+  // let hasSwitched = false;
+  // const withLoess = t50g50.map((point, index) => {
+  //   // const loess = point.frequency > 800 ? loess2 : loess1;
+
+  //   if (point.frequency > 600 && Math.abs(loess1[index] - loess2[index]) < 0.1 && !hasSwitched) {
+  //     loess = loess2;
+  //     hasSwitched = true;
+  //   }
+
+  //   if (Math.abs(point.db - loess[index]) < 3) {
+  //     point.db = loess[index];
+  //   }
+  //   return point;
+  // });
+
+  // await fs.promises.writeFile(path.join(folderPath, "data-loess.json"), JSON.stringify(withLoess));
+
+  const akima = new Akima();
+
+  const f = akima.createInterpolator(xval, yval);
+
+  const withAkima = t50g50.map((point, index) => {
+    point.db = f(index);
+    return point;
+  });
+
+  await fs.promises.writeFile(path.join(folderPath, "data-akima.json"), JSON.stringify(withAkima));
 }
 
 run();
