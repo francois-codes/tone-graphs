@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import * as R from "ramda";
 
 import { Chart } from "./components/Chart";
 import { Container } from "./components/Container";
@@ -11,6 +12,8 @@ import { InfoText } from "./components/InfoText";
 import { TopLinks } from "./components/TopLinks";
 import { Share } from "./components/Share";
 import { Modal } from "./components/Modal";
+import { useSetDatapoints } from "src/atoms/datapoints";
+import { fetchDataPoints } from "src/Pedals/fetch";
 
 type Props = {
   state: PedalState;
@@ -18,6 +21,19 @@ type Props = {
 };
 
 export function Home({ state, preview }: Props) {
+  const { setDatapointsForPedal } = useSetDatapoints();
+
+  useEffect(() => {
+    if (!R.isEmpty(state)) {
+      state
+        .filter((pedal) => pedal.selected)
+        .forEach(async (pedal) => {
+          const datapoints = await fetchDataPoints(pedal);
+          setDatapointsForPedal(pedal, datapoints);
+        });
+    }
+  }, []);
+
   return (
     <SafeAreaProvider>
       <Loader state={state} preview={preview}>

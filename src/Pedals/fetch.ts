@@ -13,8 +13,8 @@ export async function fetchPedals(preview = false, state: PedalState): Promise<P
   return pedals;
 }
 
-export async function fetchDataPoints(pedal: Pedal) {
-  const endpoint = `/api/pedal/${pedal.id}/data`;
+export async function fetchDataPoints({ id }: { id: string }) {
+  const endpoint = `/api/pedal/${id}/data`;
   const { datapoints } = await fetch(endpoint).then((res) => res.json());
 
   return datapoints;
