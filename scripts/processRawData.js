@@ -32,7 +32,9 @@ const maxRef = valuePoints.reduce((max, value) => {
 }, []);
 
 const toCsv = (data) =>
-  data.map(({ frequency, db, name, tone, gain }) => `${frequency},${db},${name},${gain},${tone},`).join("\r");
+  ["Frequency,dB,pedal,Tone,Gain"]
+    .concat(data.map(({ frequency, db, tone, gain }) => `${frequency},${db},${name},${gain},${tone},`))
+    .join("\r");
 
 async function extractDataFromFile(fileName, folderPath) {
   const filePath = path.join(folderPath, fileName);
@@ -115,6 +117,7 @@ async function run() {
 
   // console.log(toCsv(normalizedData));
   await fs.promises.writeFile(path.join(folderPath, "data.json"), JSON.stringify(normalizedData));
+  await fs.promises.writeFile(path.join(folderPath, "data.csv"), toCsv(normalizedData));
 }
 
 run();
