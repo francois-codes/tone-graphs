@@ -37,3 +37,16 @@ declare type ResponsiveSpecs<T> = {
   tablet?: T;
   desktop: T;
 };
+
+type RawDataPoints = [number, number][];
+
+type XValsAndYVals = [number[], number[]];
+
+type ObjectDataRow = {
+  frequency: number;
+  db: number;
+  tone: string;
+  gain: string;
+};
+
+type ObjectData = ObjectDataRow[];

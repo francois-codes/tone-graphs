@@ -16,19 +16,6 @@ const PINK_NOISE_FILE_NAME = "pink noise";
 const DATA_ROW_KEYS = ["frequency", "db", "tone", "gain"];
 const CSV_HEADER = ["Frequency,dB,pedal,Tone,Gain"];
 
-type RawDataPoints = [number, number][];
-
-type XValsAndYVals = [number[], number[]];
-
-type ObjectDataRow = {
-  frequency: number;
-  db: number;
-  tone: string;
-  gain: string;
-};
-
-type ObjectData = ObjectDataRow[];
-
 export function reducePoints(points: RawDataPoints): XValsAndYVals {
   return points.reduce(
     ([xval, yval], [x, y]) => {

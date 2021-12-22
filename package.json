@@ -25,7 +25,8 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-web": "0.17.1",
     "recharts": "^2.1.6",
-    "recoil": "^0.5.2"
+    "recoil": "^0.5.2",
+    "science": "^1.9.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

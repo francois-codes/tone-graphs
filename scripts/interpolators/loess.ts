@@ -1,19 +1,17 @@
 // //adapted from the LoessInterpolator in org.apache.commons.math
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-function tricube(x) {
+function tricube(x: number) {
   return (1 - x ** 3) ** 3;
 }
 
-function loess(xval, yval, bandwidth) {
+function loess(xval: number[], yval: number[], bandwidth: number) {
   const res = [];
 
   let left = 0;
   let right = Math.floor(bandwidth * xval.length) - 1;
 
-  for (let i in xval) {
-    const x = xval[i];
-
+  xval.forEach((x, i) => {
     if (i > 0) {
       if (right < xval.length - 1 && xval[right + 1] - xval[i] < xval[i] - xval[left]) {
         left++;
@@ -72,13 +70,15 @@ function loess(xval, yval, bandwidth) {
     const alpha = meanY - beta * meanX;
 
     res[i] = beta * x + alpha;
-  }
+  });
 
   return res;
 }
 
-module.exports = function interpolate([xval, yval], bandwidth = 0.1) {
-  const res = loess(xval, yval, bandwidth);
+export default function interpolator(bandwidth: number) {
+  return function interpolate([xval, yval]: XValsAndYVals): XValsAndYVals {
+    const res = loess(xval, yval, bandwidth);
 
-  return [xval, res];
-};
+    return [xval, res];
+  };
+}
