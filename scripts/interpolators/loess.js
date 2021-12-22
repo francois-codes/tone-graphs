@@ -1,26 +1,5 @@
 // //adapted from the LoessInterpolator in org.apache.commons.math
-module.exports = function loess_pairs(datapoints, bandwidth = 0.1) {
-  const { xval, yval } = datapoints.reduce(
-    ({ xval, yval }, { db, frequency }) => {
-      xval.push(frequency);
-      yval.push(db);
-
-      return { xval, yval };
-    },
-    { xval: [], yval: [] },
-  );
-
-  // console.log(xval);
-  // console.log(yval);
-  const res = loess(xval, yval, bandwidth);
-  // console.log(res);
-
-  return datapoints.map((datapoint, index) => {
-    datapoint.loess = res[index];
-
-    return datapoint;
-  });
-};
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 function tricube(x) {
   return (1 - x ** 3) ** 3;
@@ -97,3 +76,9 @@ function loess(xval, yval, bandwidth) {
 
   return res;
 }
+
+module.exports = function interpolate([xval, yval], bandwidth = 0.1) {
+  const res = loess(xval, yval, bandwidth);
+
+  return [xval, res];
+};

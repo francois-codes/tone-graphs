@@ -4,6 +4,7 @@
   "dependencies": {
     "akima-interpolator": "^1.0.0",
     "app-root-path": "^3.0.0",
+    "commons-math-interpolation": "^2.2.2",
     "contentful": "^9.1.5",
     "d3-scale": "^4.0.2",
     "electron-is-dev": "^2.0.0",
@@ -64,7 +65,8 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "build": "next build",
-    "start:electron": "electron ."
+    "start:electron": "electron .",
+    "analyze": "ts-node ./scripts/analyze.ts"
   },
   "private": true,
   "husky": {

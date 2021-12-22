@@ -1,5 +1,8 @@
 // Based on org.apache.commons.math.analysis.interpolation.LoessInterpolator
 // from http://commons.apache.org/math/
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+const { reducePoints } = require("./utils");
 
 const science = {
   stats: {},
@@ -226,4 +229,9 @@ science.stats.quantiles = function (d, quantiles) {
   });
 };
 
-module.exports = science;
+module.exports = function interpolate(datapoints, bandwidth) {
+  const [xval, yval] = reducePoints(datapoints);
+  const smooth = science.stats.loess(bandwidth);
+
+  return smooth(xval, yval).map((data) => [xval[index], data]);
+};
