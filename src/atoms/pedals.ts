@@ -37,5 +37,11 @@ export function useSetPedalState() {
     });
   };
 
-  return { setPedalSelected, setPedalVisible };
+  const setPedalColor = (pedal, color) => {
+    setPedals((oldPedals) => {
+      return updatePedal(oldPedals, pedal, { color });
+    });
+  };
+
+  return { setPedalSelected, setPedalVisible, setPedalColor };
 }

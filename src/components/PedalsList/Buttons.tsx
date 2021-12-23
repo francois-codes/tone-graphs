@@ -4,6 +4,8 @@ import { useSetPedalState } from "src/atoms/pedals";
 import { Button } from "../Button";
 import { createStyles } from "../Theme";
 
+import { ColorSelector } from "./ColorSelector";
+
 const styles = createStyles(({ theme }) => ({
   container: {
     flexDirection: "row",
@@ -31,7 +33,7 @@ export function Buttons({ pedal }: { pedal: Pedal }) {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.color, { backgroundColor: pedal.color }]} />
+      <ColorSelector pedal={pedal} />
       {buttons.map((button, index) => (
         <Button key={index} {...button} />
       ))}

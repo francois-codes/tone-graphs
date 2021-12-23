@@ -19,11 +19,13 @@
     "next-transpile-modules": "^9.0.0",
     "ramda": "^0.27.1",
     "react": "17.0.1",
+    "react-color": "^2.19.3",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
     "react-native-elements": "^3.4.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-web": "0.17.1",
+    "react-tiny-popover": "^7.0.1",
     "recharts": "^2.1.6",
     "recoil": "^0.5.2",
     "science": "^1.9.3"

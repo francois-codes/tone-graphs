@@ -22,3 +22,7 @@
   font-weight: 800;
 }
 
+
+html, body {
+  font-family: "Open Sans", Arial, sans-serif;
+}

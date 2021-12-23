@@ -54,7 +54,7 @@ export function Chart({ pedal }: Props) {
 
   const graphData = useMemo(
     () => getGraphData(select, pedalsToGraph),
-    [select, pedalsToGraph.length, datapointsLength],
+    [select, pedalsToGraph.length, datapointsLength, visiblePedals.map((pedal) => pedal.color).join("-")],
   );
 
   const { width, height } = useChartDimensions();
