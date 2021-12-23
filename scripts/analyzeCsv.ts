@@ -8,7 +8,7 @@ import * as R from "ramda";
 import averagePoint from "./interpolators/averagePoint";
 import {
   csvToGroupedDataPoints,
-  inspect,
+  inspect, // eslint-disable-line @typescript-eslint/no-unused-vars
   countPoints,
   formatDataPoints,
   reducePoints,

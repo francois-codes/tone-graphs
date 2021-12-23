@@ -133,7 +133,7 @@ function getChunkSize(length) {
 export function countPoints(points: RawDataPoints) {
   const steps = [0, 200, 800, 2000, 5000, 10000, 20000];
 
-  const pointsPerRange = R.groupBy(([x, y]) => {
+  const pointsPerRange = R.groupBy(([x]) => {
     const stepIndex = R.findIndex((step) => x <= step, steps);
     return steps[stepIndex - 1];
   }, points);
@@ -157,6 +157,7 @@ export function csvToGroupedDataPoints(csv: string): Record<string, RawDataPoint
     R.mapObjIndexed(R.map(({ frequency, db }) => [Number(frequency), Number(db)])),
     R.groupBy(R.prop("settings")),
     R.reject(({ frequency, db }) => frequency === 0 || db === 0),
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     R.map(([frequency, db, _, gain, tone]) => ({
       frequency,
       db,
