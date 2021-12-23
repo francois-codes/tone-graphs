@@ -45,9 +45,17 @@ export function Chart({ pedal }: Props) {
   const datapoints = useRecoilValue(selectedDataPoints);
   const pedalsToGraph = pedal ? [pedal] : withDatapoints(datapoints, visiblePedals);
 
+  const datapointsLength = R.compose(
+    R.reduce((length, pedalPoints) => length + pedalPoints.length, 0),
+    R.values,
+  )(datapoints);
+
   const select = useCallback(R.compose(getPropOrFirst(gainValue), getPropOrFirst(toneValue)), [gainValue, toneValue]);
 
-  const graphData = useMemo(() => getGraphData(select, pedalsToGraph), [select, pedalsToGraph.length]);
+  const graphData = useMemo(
+    () => getGraphData(select, pedalsToGraph),
+    [select, pedalsToGraph.length, datapointsLength],
+  );
 
   const { width, height } = useChartDimensions();
 
