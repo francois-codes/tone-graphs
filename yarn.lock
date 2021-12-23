@@ -3124,6 +3124,11 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.4, ajv@^6.12.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+akima-interpolator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/akima-interpolator/-/akima-interpolator-1.0.0.tgz#eccdadfd441811cddc02c13c6fc0e69e247d45c8"
+  integrity sha512-CXySeO7xAjQ5RHtI/QanUJvtxx7WRWu8+M9zInxXtCJ83bJ8HvWQgWn16Ehrck+EA/t7fhVY8VauPdFwS9weyQ==
+
 alphanum-sort@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
@@ -4510,6 +4515,11 @@ commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
+
+commons-math-interpolation@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/commons-math-interpolation/-/commons-math-interpolation-2.2.2.tgz#df79cf02a66921abf541127fe2e262a072cd4565"
+  integrity sha512-rMkv8/kskeq7u9Fmq9d+2sq9eHTRb5K9SoYubi8O6ux40Uni4WLKItNXAYOGPMzmNU8V/XbI1GLSC0Qwaz54xQ==
 
 compare-versions@^3.4.0:
   version "3.6.0"
@@ -11887,6 +11897,11 @@ schema-utils@^3.0.0:
     "@types/json-schema" "^7.0.8"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+science@^1.9.3:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/science/-/science-1.9.3.tgz#ec89bac44aeff2e5a2d749aa496f377089903dd4"
+  integrity sha1-7Im6xErv8uWi10mqSW83cImQPdQ=
 
 semver-compare@^1.0.0:
   version "1.0.0"
