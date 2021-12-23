@@ -38,6 +38,7 @@ export function ColorSelector({ pedal }: Props) {
           color={pedal.color}
           onChangeComplete={({ hex }) => {
             setPedalColor(pedal, hex);
+            setModal(false);
           }}
         />
       }
