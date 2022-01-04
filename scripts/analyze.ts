@@ -36,9 +36,9 @@ async function run() {
 
       return R.compose(
         formatDataPoints(fileName),
-        toXYPairs,
-        averagePoint(20),
-        reducePoints,
+        // toXYPairs,
+        // averagePoint(20),
+        // reducePoints,
         countPoints,
         normalize,
         getRelativeData(pinkNoiseRawData),
