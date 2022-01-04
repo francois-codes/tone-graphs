@@ -2,9 +2,8 @@ import React, { useCallback, useMemo } from "react";
 import { View } from "react-native";
 import * as R from "ramda";
 
-import { useRange } from "src/hooks/useRange";
+import { useClampedRange } from "src/hooks/useRange";
 import { useChartDimensions } from "src/hooks/useChartDimensions";
-import { PropSelector } from "src/components/PropSelector";
 import { createStyles } from "../Theme";
 import { getGraphData, getPropOrFirst } from "./data";
 
@@ -18,9 +17,19 @@ const styles = createStyles(({ theme, responsiveValue }) => ({
     flexDirection: "column",
   },
   chartContainer: {
-    marginLeft: -15,
+    // marginLeft: -15,
     marginTop: responsiveValue({ desktop: theme.spacings.l, mobile: theme.spacings.s }),
     marginBottom: responsiveValue({ desktop: theme.spacings.l, mobile: theme.spacings.s }),
+  },
+  controlPanel: {
+    flexDirection: "row",
+    // width: "100%",
+    flexGrow: 0,
+    marginHorizontal: 60,
+    marginVertical: theme.spacings.m,
+    borderWidth: 1,
+    borderColor: theme.colors.lighterDark,
+    borderRadius: theme.spacings.s,
   },
 }));
 
@@ -36,8 +45,9 @@ const withDatapoints = (datapoints, pedals) => {
 };
 
 export function Chart({ pedal }: Props) {
-  const [toneRange, setToneRange] = useRange("tone");
-  const [gainRange, setGainRange] = useRange("gain");
+  const toneRange = useClampedRange("tone");
+  const gainRange = useClampedRange("gain");
+
   const visiblePedals = useRecoilValue(visiblePedalsSelector);
   const toneValue = `${toneRange}%`;
   const gainValue = `${gainRange}%`;
@@ -64,8 +74,6 @@ export function Chart({ pedal }: Props) {
       <View style={styles.chartContainer}>
         <Graph width={width} height={height} graphData={graphData} />
       </View>
-      <PropSelector label="Tone" value={toneRange} setValue={setToneRange} />
-      <PropSelector label="Gain" value={gainRange} setValue={setGainRange} />
     </View>
   );
 }

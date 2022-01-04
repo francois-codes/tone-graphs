@@ -3,12 +3,15 @@
 ############################
 
 #Load text files exported from Audacity and change column names
+local({r <- getOption("repos")
+       r["CRAN"] <- "https://cran.irsn.fr/"
+       options(repos=r)})
 
 install.packages("pacman")
 
 pacman::p_load(ggplot2, tidyr, dplyr, janitor, readr, tibble)
 
-folder = "green big muff"
+folder = "blues driver - C bis"
 gain = 100
 
 #Pink Noise
@@ -78,10 +81,10 @@ BM_data <-
   
   
 plot_data <- function (data, tone_value) {
-	d <- filter(data, tone == tone_value)  
+	d <- filter(data, tone == tone_value, dB>-25)  
 	x = d$frequency_hz
 	y = d$dB
-	plot(x, y, log="x", panel.first = grid(), type="n", xlab="frequency", ylab="dB", main=paste("tone:",tone_value))
+	plot(x, y, log="x", panel.first = grid(), type="n", xlab="frequency", xlim=range(40:20000), ylab="dB", ylim=range(-25:5), main=paste("tone:",tone_value))
 
 	lw1 = loess(y ~ x, span=0.9)
 	lines(lw1)
@@ -95,4 +98,4 @@ plot_data(BM_data, "50%")
 plot_data(BM_data, "75%")
 plot_data(BM_data, "100%")
   
-#write_csv(plot_data, "/Users/francois/dev/playgrounds/tone-graphs/data/nobels odr-1/plot.csv")
+write_csv(BM_data, paste("/Users/francois/dev/playgrounds/tone-graphs/data/",folder ,"/data.csv", sep=""))

@@ -8,6 +8,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { PedalContainer } from "./PedalContainer";
 import { selectedPedalsSelector } from "src/atoms/pedals";
 import { Modals, modalsAtom } from "src/atoms/modals";
+import { ControlPanel } from "../ControlPanel.tsx";
 
 export function PedalsList() {
   const styles = useCreateStyles(({ theme }) => ({
@@ -36,6 +37,7 @@ export function PedalsList() {
 
   return (
     <View style={styles.container}>
+      <ControlPanel />
       {pedals.map((pedal, index) => (
         <Pedal key={index} pedal={pedal} />
       ))}
