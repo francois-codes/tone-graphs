@@ -14,7 +14,7 @@ type Props = {
 export function PropSelector(props: Props) {
   const { value, setValue, label } = props;
 
-  const styles = useCreateStyles(({ theme, responsiveValue }) => ({
+  const styles = useCreateStyles(({ theme }) => ({
     container: {
       justifyContent: "center",
       alignItems: "center",

@@ -1,8 +1,6 @@
 import React, { ReactNode } from "react";
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useRecoilValue } from "recoil";
-import { modalsAtom } from "src/atoms/modals";
 import { Footer } from "../Footer";
 import { useCreateStyles } from "../Theme";
 
@@ -36,16 +34,10 @@ export function Container({ children }: Props) {
     },
   }));
 
-  const modal = useRecoilValue(modalsAtom);
-
   return (
     <SafeAreaView style={styles.app}>
-      <ScrollView bounces={false} scrollEnabled={false} contentContainerStyle={styles.scrollContainer}>
-        <ScrollView bounces scrollEnabled={modal === null} contentContainerStyle={styles.innerScroll}>
-          <View style={styles.container}>{children}</View>
-        </ScrollView>
-        <Footer />
-      </ScrollView>
+      <View style={styles.container}>{children}</View>
+      <Footer />
     </SafeAreaView>
   );
 }

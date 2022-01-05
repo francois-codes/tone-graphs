@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import * as R from "ramda";
 import { View, ImageStyle, Animated, PanResponder } from "react-native";
 import { knob } from "src/assets";
@@ -44,19 +44,38 @@ export function Pot({ onValueChange, value: initialValue = 50 }: Props) {
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponderCapture: () => true,
       onPanResponderGrant: () => {
         // @ts-ignore
         pan.setOffset(pan._value);
       },
-      onPanResponderMove: Animated.event([null, { dy: pan }]),
+      onPanResponderMove: (e, gesture) => {
+        Animated.event([null, { dy: pan }])(e, gesture);
+      },
       onPanResponderRelease: () => {
         pan.flattenOffset();
       },
     }),
   ).current;
 
+  const potView = useRef(null);
+
+  const onTouchMove = (e) => {
+    if (e.target === potView.current.children[0].children[1]) {
+      e.preventDefault();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+
+    return () => {
+      window.removeEventListener("touchmove", onTouchMove);
+    };
+  }, [potView.current]);
+
   return (
-    <View style={styles.container}>
+    <View style={styles.container} ref={potView}>
       <Animated.Image
         source={{ uri: knob }}
         style={

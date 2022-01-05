@@ -12,7 +12,7 @@ install.packages("pacman")
 pacman::p_load(ggplot2, tidyr, dplyr, janitor, readr, tibble)
 
 folder = "blues driver - C bis"
-gain = 100
+gain = 50
 
 #Pink Noise
 BM_pn<-read_tsv(paste("/Users/francois/dev/playgrounds/tone-graphs/data/",folder,"/pink noise.txt", sep="")) %>%
@@ -81,12 +81,12 @@ BM_data <-
   
   
 plot_data <- function (data, tone_value) {
-	d <- filter(data, tone == tone_value, dB>-25)  
+	d <- filter(data, tone == tone_value)  
 	x = d$frequency_hz
 	y = d$dB
 	plot(x, y, log="x", panel.first = grid(), type="n", xlab="frequency", xlim=range(40:20000), ylab="dB", ylim=range(-25:5), main=paste("tone:",tone_value))
 
-	lw1 = loess(y ~ x, span=0.9)
+	lw1 = loess(y ~ x, data=d, span=0.3)
 	lines(lw1)
 }
 
