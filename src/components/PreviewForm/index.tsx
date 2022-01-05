@@ -4,6 +4,7 @@ import { View, Text } from "react-native";
 import { TextInput } from "../TextInput";
 import { Button } from "../Button";
 import { useCreateStyles } from "../Theme";
+import { ControlPanel } from "../ControlPanel.tsx";
 
 type Props = {
   state: Pedal;
@@ -39,6 +40,7 @@ export function PreviewForm(props: Props) {
         placeholder="type pedal datapoints"
         onChangeText={props.setDatapoints}
       />
+      <ControlPanel />
       <View style={styles.buttonContainer}>
         <Button icon="clear" onPress={props.resetState} />
         <Button
