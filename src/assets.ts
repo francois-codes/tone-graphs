@@ -17,3 +17,9 @@ export const fuzzBenderImage = require("../assets/pedals/keeley_electronics_fuzz
 export const distPlusImage = require("../assets/pedals/mxr_distortion+.webp");
 
 export const ord1Image = require("../assets/pedals/nobels_odr-1.webp");
+
+export const potBackground = require("../assets/pot-background.png");
+
+export const pot = require("../assets/pot.png");
+
+export const knob = require("../assets/knob.png");

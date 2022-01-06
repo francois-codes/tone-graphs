@@ -31,7 +31,11 @@ async function run() {
     R.flatten,
     R.values,
     R.mapObjIndexed((points, settings) =>
-      R.compose(formatDataPoints(settings), toXYPairs, averagePoint(20), reducePoints, countPoints)(points),
+      R.compose(
+        formatDataPoints(settings),
+        // toXYPairs, averagePoint(20), reducePoints,
+        countPoints,
+      )(points),
     ),
     csvToGroupedDataPoints,
   )(fileContent);

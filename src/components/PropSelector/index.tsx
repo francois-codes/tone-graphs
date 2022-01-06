@@ -1,8 +1,8 @@
 import React from "react";
-import { Slider, Text } from "react-native-elements";
+import { Text } from "react-native-elements";
 import { View } from "react-native";
 import { useCreateStyles } from "../Theme";
-import { useChartDimensions } from "src/hooks/useChartDimensions";
+import { Pot } from "../Pot";
 
 type Props = {
   label: string;
@@ -11,44 +11,26 @@ type Props = {
   steps?: number;
 };
 
-const DEFAULT_STEPS = 25;
-
 export function PropSelector(props: Props) {
-  const { value, setValue, label, steps = DEFAULT_STEPS } = props;
+  const { value, setValue, label } = props;
 
-  const { width } = useChartDimensions();
-
-  const styles = useCreateStyles(({ theme, responsiveValue }) => ({
+  const styles = useCreateStyles(({ theme }) => ({
     container: {
-      width,
-      flexDirection: "row",
+      justifyContent: "center",
       alignItems: "center",
       paddingLeft: 55,
     },
-    text: theme.typography.h2.extend({
-      width: responsiveValue({ desktop: 130, mobile: 100 }),
-      paddingRight: theme.spacings.l,
+    text: theme.typography.p.extend({
+      color: theme.colors.lighterDark,
+      fontWeight: "800",
+      textAlign: "center",
     }),
-    slider: { width: width - 200 },
-    trackStyle: { height: 3, width: "100%" },
-    thumbStyle: { height: 15, width: 15, backgroundColor: theme.colors.dark },
   }));
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>
-        {label}: {value}%
-      </Text>
-      <Slider
-        style={styles.slider}
-        value={value}
-        step={steps}
-        minimumValue={0}
-        maximumValue={100}
-        onValueChange={setValue}
-        trackStyle={styles.trackStyle}
-        thumbStyle={styles.thumbStyle}
-      />
+      <Text style={styles.text}>{label}</Text>
+      <Pot value={value} onValueChange={setValue} />
     </View>
   );
 }
