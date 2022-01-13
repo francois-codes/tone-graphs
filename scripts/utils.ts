@@ -12,7 +12,7 @@ const EMPTY_STRING = "";
 const DOT = ".";
 const DASH = "-";
 const MAX_FREQUENCY = 20_500;
-const MIN_DB = -55;
+// const MIN_DB = -55;
 const UTF_8 = "utf8";
 const PINK_NOISE_FILE_NAME = "pink noise";
 const DATA_ROW_KEYS = ["frequency", "db", "tone", "gain"];
@@ -36,11 +36,11 @@ export async function parseFile(fileName: string, folderPath: string): Promise<R
   const fileContent = await fs.promises.readFile(filePath, UTF_8);
 
   const freqIsHigherThanMax = R.compose(R.gt(R.__, MAX_FREQUENCY), R.head);
-  const dbIsLower = R.compose(R.lt(R.__, MIN_DB), R.prop(1));
+  // const dbIsLower = R.compose(R.lt(R.__, MIN_DB), R.prop(1));
   const hasNaNValue = R.any(Number.isNaN);
 
   return R.compose(
-    R.reject(R.anyPass([hasNaNValue, freqIsHigherThanMax, dbIsLower, R.propEq("0", 0)])),
+    R.reject(R.anyPass([hasNaNValue, freqIsHigherThanMax, /* dbIsLower, */ R.propEq("0", 0)])),
     R.map(R.compose(R.map(Number), R.split(TAB_BREAK))),
     R.tail,
     R.split(LINE_BREAK),

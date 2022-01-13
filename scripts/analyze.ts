@@ -39,7 +39,7 @@ async function run() {
         // toXYPairs,
         // averagePoint(5, 500),
         // reducePoints,
-        countPoints,
+        // countPoints,
         normalize,
         getRelativeData(pinkNoiseRawData),
       )(rawDataPoints);

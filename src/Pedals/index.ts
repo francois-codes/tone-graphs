@@ -1,4 +1,6 @@
 import client from "../data/client";
+import * as R from "ramda";
+import * as Vibrant from "node-vibrant";
 
 type PedalState = {
   id: string;
@@ -16,26 +18,31 @@ function getRandomColor() {
   return color;
 }
 
-function parseRemotePedalData(items, preview, state): Pedal[] {
-  return items
-    .filter(({ fields }) => fields.preview !== true || preview === true)
-    .map(({ fields, sys }) => {
-      const { name, brand, image } = fields;
-      const { id } = sys;
+function parseRemotePedalData(items, preview, state): Promise<Pedal[]> {
+  return Promise.all(
+    items
+      .filter(({ fields }) => fields.preview !== true || preview === true)
+      .map(async ({ fields, sys }) => {
+        const { name, brand, image } = fields;
+        const { id } = sys;
 
-      const pedalState = state ? state?.find?.((s) => s.id === id) : null;
+        const pedalState = state ? state?.find?.((s) => s.id === id) : null;
+        const imageUrl = image?.fields?.file?.url;
 
-      return {
-        id,
-        name,
-        brand,
-        image: image.fields.file.url,
-        color: pedalState?.color ?? getRandomColor(),
-        datapoints: [],
-        visible: pedalState?.visible ?? false,
-        selected: pedalState?.selected ?? false,
-      };
-    });
+        const color = await Vibrant.from(`https://${imageUrl}`).getPalette();
+
+        return {
+          id,
+          name,
+          brand,
+          image: image.fields.file.url,
+          color: pedalState?.color ?? color.Vibrant.hex ?? getRandomColor(),
+          datapoints: [],
+          visible: pedalState?.visible ?? false,
+          selected: pedalState?.selected ?? false,
+        };
+      }),
+  );
 }
 
 export async function getPedals(preview: string | boolean = false, state: PedalState): Promise<Pedal[]> {
