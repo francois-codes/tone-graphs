@@ -22,6 +22,7 @@ function parseRemotePedalData(items, preview, state): Promise<Pedal[]> {
   return Promise.all(
     items
       .filter(({ fields }) => fields.preview !== true || preview === true)
+      .sort((a, b) => (a.fields.name.toLowerCase() > b.fields.name.toLowerCase() ? 1 : -1))
       .map(async ({ fields, sys }) => {
         const { name, brand, image } = fields;
         const { id } = sys;
