@@ -71,7 +71,8 @@
     "build": "next build",
     "start:electron": "electron .",
     "analyze": "ts-node ./scripts/analyze.ts",
-    "analyze:csv": "ts-node ./scripts/analyzeCsv.ts"
+    "analyze:csv": "ts-node ./scripts/analyzeCsv.ts",
+    "analyze:r": "Rscript R-analyze.R"
   },
   "private": true,
   "husky": {

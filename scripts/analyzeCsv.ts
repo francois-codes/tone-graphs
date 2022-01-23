@@ -34,7 +34,7 @@ async function run() {
       R.compose(
         formatDataPoints(settings),
         // toXYPairs, averagePoint(20), reducePoints,
-        countPoints,
+        // countPoints,
       )(points),
     ),
     csvToGroupedDataPoints,

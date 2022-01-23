@@ -60,7 +60,7 @@ function stringifyIfNeeded(data: string | unknown): string {
 }
 
 export function writeFile(fileName: string, folderPath: string, data: string | unknown): Promise<void> {
-  return fs.promises.writeFile(path.join(folderPath, fileName), stringifyIfNeeded(data));
+  return fs.promises.writeFile(path.join(folderPath, fileName), stringifyIfNeeded(data).replace(/\\"/g, ""));
 }
 
 const formatLabel = (prefix, value) => (value.includes("NA") ? "NA" : `${value.replace(prefix, EMPTY_STRING)}%`);
@@ -159,7 +159,7 @@ export function csvToGroupedDataPoints(csv: string): Record<string, RawDataPoint
     R.groupBy(R.prop("settings")),
     R.reject(({ frequency, db }) => frequency === 0 || db === 0),
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    R.map(([frequency, db, _, gain, tone]) => ({
+    R.map(([frequency, db, tone, gain]) => ({
       frequency,
       db,
       settings: `t${tone?.replace(PERCENT, EMPTY_STRING) ?? "NA"}-g${gain?.replace(PERCENT, EMPTY_STRING) ?? "NA"}`,
