@@ -3,10 +3,13 @@ import React from "react";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useCreateStyles } from "../Theme";
 import { TouchableOpacity, View, Text } from "react-native";
-import { useShareLink } from "src/hooks/useShareLink";
+import { useShareLinkData } from "src/hooks/useShareLinkData";
+import { getShortUrl } from "src/data/urlShortenerFront";
 
-async function copyToClipboard(text) {
-  await window.navigator.clipboard.writeText(text);
+async function copyToClipboard(payload) {
+  const link = await getShortUrl(payload);
+  console.log({ link });
+  await window.navigator.clipboard.writeText(link);
   alert("Link copied to clipboard !!");
 }
 
@@ -17,8 +20,10 @@ function goToInstagram() {
 const messageBody = (url) =>
   `Check out this awesome this cool graph of pedal EQ responses at https://tonegraphs.com ! %0D%0A%0D%0A${url}`;
 
-function shareByMail(text) {
-  window.open("mailto:?subject=ToneGraphs&body=" + messageBody(text), "_blank");
+async function shareByMail(payload) {
+  const link = await getShortUrl(payload);
+  console.log({ link });
+  window.open("mailto:?subject=ToneGraphs&body=" + messageBody(link), "_blank");
 }
 
 export function Share() {
@@ -43,12 +48,12 @@ export function Share() {
     text: theme.typography.p.extend({ marginHorizontal: theme.spacings.m }),
   }));
 
-  const shareLink = useShareLink();
+  const shareLinkPayload = useShareLinkData();
 
   const shareButtons = [
     {
       icon: "link",
-      onPress: () => copyToClipboard(shareLink),
+      onPress: () => copyToClipboard(shareLinkPayload),
       Component: MaterialIcons,
       text: "copy link to this page",
     },
@@ -60,7 +65,7 @@ export function Share() {
     },
     {
       icon: "mail-outline",
-      onPress: () => shareByMail(shareLink),
+      onPress: () => shareByMail(shareLinkPayload),
       Component: MaterialIcons,
       text: "share by email",
     },
