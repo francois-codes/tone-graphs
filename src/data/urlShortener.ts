@@ -6,6 +6,8 @@ const SHORT_URLS = "short_urls";
 export async function setShortUrl(payload) {
   const id = v4();
 
+  if (!payload) return { id: null };
+
   await supabase.from(SHORT_URLS).insert([{ id, payload }]);
 
   return { id };

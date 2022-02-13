@@ -9,6 +9,9 @@ const withFonts = require("next-fonts");
 const withImages = require("next-images");
 
 const nextConfig = {
+  env: {
+    TONE_GRAPH_API_TOKEN: process.env.TONE_GRAPH_API_TOKEN,
+  },
   experimentals: { esmExternals: "loose" },
   typescript: { ignoreBuildErrors: true }, // yeah I know
   // async headers() {
