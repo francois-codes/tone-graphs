@@ -1,7 +1,7 @@
 // @generated: @expo/next-adapter@2.1.52
 import React from "react";
 import { RecoilRoot } from "recoil";
-import { decodeState } from "src/data/utils";
+import { getPayload } from "src/data/urlShortener";
 import { Home } from "../src/Home";
 
 type Props = {
@@ -18,10 +18,17 @@ export default function App({ state, preview }: Props) {
 }
 
 export async function getServerSideProps(ctx) {
-  const state = decodeState(ctx.query.p) || {};
-  const preview = ctx.query.preview || false;
+  const pId = ctx.query.p;
+
+  if (pId) {
+    const { preview = false, ...payload } = await getPayload(pId);
+
+    return {
+      props: { state: Object.values(payload) || [], preview },
+    };
+  }
 
   return {
-    props: { state, preview },
+    props: { state: [], preview: ctx.query.preview || false },
   };
 }

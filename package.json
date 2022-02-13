@@ -2,8 +2,10 @@
   "main": "main/index.js",
   "types": "index.d.ts",
   "dependencies": {
+    "@supabase/supabase-js": "^1.29.4",
     "akima-interpolator": "^1.0.0",
     "app-root-path": "^3.0.0",
+    "axios": "^0.25.0",
     "commons-math-interpolation": "^2.2.2",
     "contentful": "^9.1.5",
     "d3-scale": "^4.0.2",
@@ -29,7 +31,8 @@
     "react-tiny-popover": "^7.0.1",
     "recharts": "^2.1.6",
     "recoil": "^0.5.2",
-    "science": "^1.9.3"
+    "science": "^1.9.3",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
